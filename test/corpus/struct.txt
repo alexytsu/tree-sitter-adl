@@ -1,0 +1,49 @@
+================================================================================
+Struct
+================================================================================
+
+module Module {
+
+struct Struct {
+    String field0;
+    String field1;
+    Int32 field2;
+};
+
+};
+
+--------------------------------------------------------------------------------
+
+(source_file
+    (module_definition
+        (module_name
+            (identifier)
+        )
+        (module_body
+            (struct_definition
+                (struct_name
+                    (identifier)
+                )
+                (struct_body
+                    (struct_field
+                        (field_type
+                            (identifier)
+                        )
+                        (field_name
+                            (identifier)
+                        )
+                    )
+                    (struct_field
+                        (field_type
+                            (identifier)
+                        )
+                        (field_name
+                            (identifier)
+                        )
+                    )
+                    (struct_field
+                        (field_type
+                            (identifier)
+                        )
+                        (field_name
+                            (identifier))))))))

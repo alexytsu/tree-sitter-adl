@@ -1,0 +1,49 @@
+================================================================================
+Union
+================================================================================
+
+module Module {
+
+union Union {
+    Void field0;
+    String field1;
+    Int32 field2;
+};
+
+};
+
+--------------------------------------------------------------------------------
+
+(source_file
+    (module_definition
+        (module_name
+            (identifier)
+        )
+        (module_body
+            (union_definition
+                (union_name
+                    (identifier)
+                )
+                (union_body
+                    (union_field
+                        (field_type
+                            (identifier)
+                        )
+                        (field_name
+                            (identifier)
+                        )
+                    )
+                    (union_field
+                        (field_type
+                            (identifier)
+                        )
+                        (field_name
+                            (identifier)
+                        )
+                    )
+                    (union_field
+                        (field_type
+                            (identifier)
+                        )
+                        (field_name
+                            (identifier))))))))
