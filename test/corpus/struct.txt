@@ -27,7 +27,9 @@ struct Struct {
                 (struct_body
                     (struct_field
                         (field_type
-                            (identifier)
+                            (type_expression
+                                (primitive_type)
+                            )
                         )
                         (field_name
                             (identifier)
@@ -35,7 +37,9 @@ struct Struct {
                     )
                     (struct_field
                         (field_type
-                            (identifier)
+                            (type_expression
+                                (primitive_type)
+                            )
                         )
                         (field_name
                             (identifier)
@@ -43,7 +47,9 @@ struct Struct {
                     )
                     (struct_field
                         (field_type
-                            (identifier)
+                            (type_expression
+                                (primitive_type)
+                            )
                         )
                         (field_name
                             (identifier))))))))
