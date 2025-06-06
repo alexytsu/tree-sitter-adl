@@ -8,10 +8,9 @@
 // @ts-check
 
 module.exports = grammar({
-  name: "adl",
+  name: 'adl',
 
   rules: {
-    // TODO: add the actual grammar rules
-    source_file: $ => "hello"
+    source_file: $ => 'hello',
   }
 });
