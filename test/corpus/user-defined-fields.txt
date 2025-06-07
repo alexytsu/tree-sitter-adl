@@ -1,0 +1,63 @@
+================================================================================
+User-Defined Fields
+================================================================================
+
+module input.hover {
+    type Name = String;
+
+    struct Content {
+        String title;
+        String body;
+    };
+
+    struct Message {
+        Name author;
+        Content content;
+    };
+};
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (module_name
+      (identifier)
+      (identifier))
+    (module_body
+      (type_definition
+        (type_name
+          (identifier))
+        (type_expression
+          (primitive_type)))
+      (struct_definition
+        (struct_name
+          (identifier))
+        (struct_body
+          (struct_field
+            (field_type
+              (type_expression
+                (primitive_type)))
+            (field_name
+              (identifier)))
+          (struct_field
+            (field_type
+              (type_expression
+                (primitive_type)))
+            (field_name
+              (identifier)))))
+      (struct_definition
+        (struct_name
+          (identifier))
+        (struct_body
+          (struct_field
+            (field_type
+              (type_expression
+                (identifier)))
+            (field_name
+              (identifier)))
+          (struct_field
+            (field_type
+              (type_expression
+                (identifier)))
+            (field_name
+              (identifier))))))))

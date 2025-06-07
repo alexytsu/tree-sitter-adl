@@ -1,4 +1,4 @@
-module github.com/adl-lang/tree-sitter-adl
+module github.com/alexytsu/tree-sitter-adl
 
 go 1.22
 

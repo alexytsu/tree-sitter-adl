@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 keywords = ["incremental", "parsing", "tree-sitter", "adl"]
 categories = ["parser-implementations", "parsing", "text-editors"]
-repository = "https://github.com/adl-lang/tree-sitter-adl"
+repository = "https://github.com/alexytsu/tree-sitter-adl"
 edition = "2021"
 autoexamples = false
 

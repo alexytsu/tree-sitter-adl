@@ -1,0 +1,211 @@
+================================================================================
+protoapp.db
+================================================================================
+module protoapp.db {
+
+import common.time.Instant;
+import common.db.DbTable;
+import common.db.DbKey;
+import common.db.WithId;
+import common.strings.StringNE;
+import common.strings.StringML;
+
+struct AppUser {
+  StringNE fullname;
+  StringNE email;
+  Bool is_admin;
+  StringNE hashed_password = "";
+};
+
+newtype AppUserTable = WithId<AppUser>;
+type AppUserId = DbKey<AppUserTable>;
+
+annotation AppUserTable DbTable {
+  "indexes" : [["email"]],
+  "uniqueness_constraints": [["email"]],
+  "id_prefix": "U-"
+};
+
+struct Message {
+  Instant posted_at;
+  AppUserId posted_by;
+  StringML message;
+};
+newtype MessageTable = WithId<Message>;
+type MessageId = DbKey<MessageTable>;
+
+annotation MessageTable DbTable {
+  "indexes" : [["posted_at"]],
+  "id_prefix": "M-"
+};
+
+};
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (module_name
+      (identifier)
+      (identifier))
+    (module_body
+      (import_declaration
+        (import_path
+          (module_name
+            (identifier)
+            (identifier)
+            (identifier))))
+      (import_declaration
+        (import_path
+          (module_name
+            (identifier)
+            (identifier)
+            (identifier))))
+      (import_declaration
+        (import_path
+          (module_name
+            (identifier)
+            (identifier)
+            (identifier))))
+      (import_declaration
+        (import_path
+          (module_name
+            (identifier)
+            (identifier)
+            (identifier))))
+      (import_declaration
+        (import_path
+          (module_name
+            (identifier)
+            (identifier)
+            (identifier))))
+      (import_declaration
+        (import_path
+          (module_name
+            (identifier)
+            (identifier)
+            (identifier))))
+      (struct_definition
+        (struct_name
+          (identifier))
+        (struct_body
+          (struct_field
+            (field_type
+              (type_expression
+                (identifier)))
+            (field_name
+              (identifier)))
+          (struct_field
+            (field_type
+              (type_expression
+                (identifier)))
+            (field_name
+              (identifier)))
+          (struct_field
+            (field_type
+              (type_expression
+                (primitive_type)))
+            (field_name
+              (identifier)))
+          (struct_field
+            (field_type
+              (type_expression
+                (identifier)))
+            (field_name
+              (identifier))
+            (json_value
+              (json_string)))))
+      (newtype_definition
+        (type_name
+          (identifier))
+        (type_expression
+          (identifier)
+          (type_arguments
+            (type_expression
+              (identifier)))))
+      (type_definition
+        (type_name
+          (identifier))
+        (type_expression
+          (identifier)
+          (type_arguments
+            (type_expression
+              (identifier)))))
+      (annotation_declaration
+        (identifier)
+        (identifier)
+        (json_object
+          (json_object_pair
+            (json_string)
+            (json_value
+              (json_array
+                (json_value
+                  (json_array
+                    (json_value
+                      (json_string)))))))
+          (json_object_pair
+            (json_string)
+            (json_value
+              (json_array
+                (json_value
+                  (json_array
+                    (json_value
+                      (json_string)))))))
+          (json_object_pair
+            (json_string)
+            (json_value
+              (json_string)))))
+      (struct_definition
+        (struct_name
+          (identifier))
+        (struct_body
+          (struct_field
+            (field_type
+              (type_expression
+                (identifier)))
+            (field_name
+              (identifier)))
+          (struct_field
+            (field_type
+              (type_expression
+                (identifier)))
+            (field_name
+              (identifier)))
+          (struct_field
+            (field_type
+              (type_expression
+                (identifier)))
+            (field_name
+              (identifier)))))
+      (newtype_definition
+        (type_name
+          (identifier))
+        (type_expression
+          (identifier)
+          (type_arguments
+            (type_expression
+              (identifier)))))
+      (type_definition
+        (type_name
+          (identifier))
+        (type_expression
+          (identifier)
+          (type_arguments
+            (type_expression
+              (identifier)))))
+      (annotation_declaration
+        (identifier)
+        (identifier)
+        (json_object
+          (json_object_pair
+            (json_string)
+            (json_value
+              (json_array
+                (json_value
+                  (json_array
+                    (json_value
+                      (json_string)))))))
+          (json_object_pair
+            (json_string)
+            (json_value
+              (json_string))))))))

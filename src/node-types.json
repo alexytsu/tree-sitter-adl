@@ -39,11 +39,7 @@
           "named": true
         },
         {
-          "type": "json_value",
-          "named": true
-        },
-        {
-          "type": "scoped_name",
+          "type": "json_object",
           "named": true
         }
       ]
@@ -690,10 +686,6 @@
   },
   {
     "type": ":",
-    "named": false
-  },
-  {
-    "type": "::",
     "named": false
   },
   {

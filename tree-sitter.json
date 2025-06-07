@@ -24,7 +24,7 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/adl-lang/tree-sitter-adl"
+      "repository": "https://github.com/alexytsu/tree-sitter-adl"
     }
   },
   "bindings": {

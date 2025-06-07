@@ -2,7 +2,7 @@
   "name": "tree-sitter-adl",
   "version": "0.1.0",
   "description": "A tree-sitter grammar for Algebraic Data Language (ADL)",
-  "repository": "https://github.com/adl-lang/tree-sitter-adl",
+  "repository": "https://github.com/alexytsu/tree-sitter-adl",
   "license": "MIT",
   "author": {
     "name": "Alex Su",
