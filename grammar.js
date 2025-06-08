@@ -10,61 +10,47 @@
 module.exports = grammar({
   name: "adl",
 
-  extras: ($) => [ $.comment, /\s/ ],
+  extras: ($) => [$.comment, /\s/],
 
-  conflicts: ($) => [
-    [$.module_body, $.docstring_block],
-  ],
+  conflicts: ($) => [[$.module_body, $.docstring_block]],
 
   rules: {
-    source_file: ($) =>  
-      $.module_definition,
+    source_file: ($) => $.module_definition,
 
-    module_definition: ($) =>
-      seq("module", $.module_name, $.module_body),
+    scoped_name: ($) => seq($.identifier, repeat(seq(".", $.identifier))),
 
-    module_name: ($) =>
-      prec.right(seq($.identifier, repeat(seq(".", $.identifier)))),
+    module_definition: ($) => seq("module", $.scoped_name, $.module_body),
 
     module_body: ($) =>
       seq(
-        "{", 
+        "{",
         repeat(
           choice(
+            $.docstring,
             $.import_declaration,
-            $.struct_definition,
-            $.union_definition,
+            $.annotation_declaration,
             $.type_definition,
             $.newtype_definition,
-            $.annotation_declaration,
-            $.docstring
+            $.struct_definition,
+            $.union_definition
           )
-        ), 
+        ),
         "};"
       ),
 
-    import_declaration: ($) =>
-      seq("import", $.import_path, ";"),
+    import_declaration: ($) => seq("import", $.import_path, ";"),
 
-    import_path: ($) =>
-      choice(
-        seq($.module_name, ".*"),
-        $.scoped_name,
-        $.module_name
-      ),
-
-    scoped_name: ($) =>
-      seq($.module_name, ".", $.identifier),
+    import_path: ($) => seq($.scoped_name, optional(".*")),
 
     type_definition: ($) =>
       seq(
         optional($.annotations),
         optional($.docstring_block),
-        "type", 
-        $.type_name, 
+        "type",
+        $.type_name,
         optional($.type_parameters),
-        "=", 
-        $.type_expression, 
+        "=",
+        $.type_expression,
         ";"
       ),
 
@@ -72,17 +58,16 @@ module.exports = grammar({
       seq(
         optional($.annotations),
         optional($.docstring_block),
-        "newtype", 
-        $.type_name, 
+        "newtype",
+        $.type_name,
         optional($.type_parameters),
-        "=", 
+        "=",
         $.type_expression,
         optional(seq("=", $.json_value)),
         ";"
       ),
 
-    type_name: ($) =>
-      $.identifier,
+    type_name: ($) => $.identifier,
 
     type_parameters: ($) =>
       seq("<", $.identifier, repeat(seq(",", $.identifier)), ">"),
@@ -91,9 +76,7 @@ module.exports = grammar({
       choice(
         $.primitive_type,
         $.scoped_name,
-        $.identifier,
-        seq($.scoped_name, $.type_arguments),
-        seq($.identifier, $.type_arguments)
+        seq($.scoped_name, $.type_arguments)
       ),
 
     type_arguments: ($) =>
@@ -101,10 +84,21 @@ module.exports = grammar({
 
     primitive_type: ($) =>
       choice(
-        "Int8", "Int16", "Int32", "Int64",
-        "Word8", "Word16", "Word32", "Word64",
-        "Bool", "Void", "Float", "Double",
-        "String", "Bytes", "Json",
+        "Int8",
+        "Int16",
+        "Int32",
+        "Int64",
+        "Word8",
+        "Word16",
+        "Word32",
+        "Word64",
+        "Bool",
+        "Void",
+        "Float",
+        "Double",
+        "String",
+        "Bytes",
+        "Json",
         seq("Vector", $.type_arguments),
         seq("StringMap", $.type_arguments),
         seq("Nullable", $.type_arguments),
@@ -115,23 +109,19 @@ module.exports = grammar({
       seq(
         optional($.annotations),
         optional($.docstring_block),
-        "struct", 
-        $.struct_name,
+        "struct",
+        $.type_name,
         optional($.type_parameters),
         $.struct_body
       ),
 
-    struct_name: ($) => 
-      $.identifier,
+    struct_body: ($) => seq("{", repeat($.struct_field), "};"),
 
-    struct_body: ($) =>
-      seq("{", repeat($.struct_field), "};"),
-
-    struct_field: ($) => 
+    struct_field: ($) =>
       seq(
         optional($.annotations),
         optional($.docstring_block),
-        $.field_type, 
+        $.field_type,
         $.field_name,
         optional(seq("=", $.json_value)),
         ";"
@@ -141,60 +131,49 @@ module.exports = grammar({
       seq(
         optional($.annotations),
         optional($.docstring_block),
-        "union", 
-        $.union_name,
+        "union",
+        $.type_name,
         optional($.type_parameters),
         $.union_body
       ),
 
-    union_name: ($) =>
-      $.identifier,
-
-    union_body: ($) =>
-      seq("{", repeat($.union_field), "};"),
+    union_body: ($) => seq("{", repeat($.union_field), "};"),
 
     union_field: ($) =>
       seq(
         optional($.annotations),
         optional($.docstring_block),
-        $.field_type, 
+        $.field_type,
         $.field_name,
         optional(seq("=", $.json_value)),
         ";"
       ),
 
-    field_type: ($) => 
-      $.type_expression,
+    field_type: ($) => $.type_expression,
 
-    field_name: ($) => 
-      $.identifier,
+    field_name: ($) => $.identifier,
 
-    annotations: ($) =>
-      repeat1($.annotation),
+    annotations: ($) => repeat1($.annotation),
 
-    annotation: ($) =>
-      choice(
-        seq("@", choice($.scoped_name, $.identifier), optional($.json_value)),
-      ),
+    annotation_name: ($) => $.scoped_name,
+
+    annotation: ($) => seq("@", $.annotation_name, optional($.json_value)),
 
     annotation_declaration: ($) =>
       seq(
         optional($.docstring_block),
         "annotation",
-        $.identifier,
-        $.identifier,
+        $.scoped_name,
+        $.scoped_name,
         $.json_object,
         ";"
       ),
 
-    comment: ($) =>
-      seq("//", /[^\n]*/),
+    comment: ($) => seq("//", /[^\n]*/),
 
-    docstring: ($) =>
-      seq("///", /[^\n]*/),
+    docstring: ($) => seq("///", /[^\n]*/),
 
-    docstring_block: ($) =>
-      repeat1($.docstring),
+    docstring_block: ($) => repeat1($.docstring),
 
     json_value: ($) =>
       choice(
@@ -207,44 +186,48 @@ module.exports = grammar({
         $.json_object
       ),
 
-    json_number: ($) =>
-      /-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/,
+    json_number: ($) => /-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/,
 
     json_string: ($) =>
       seq(
         '"',
-        repeat(choice(
-          /[^"\\]/,
-          seq("\\", choice(
-            '"', '\\', '/', 'b', 'f', 'n', 'r', 't',
-            seq('u', /[0-9a-fA-F]{4}/)
-          ))
-        )),
+        repeat(
+          choice(
+            /[^"\\]/,
+            seq(
+              "\\",
+              choice(
+                '"',
+                "\\",
+                "/",
+                "b",
+                "f",
+                "n",
+                "r",
+                "t",
+                seq("u", /[0-9a-fA-F]{4}/)
+              )
+            )
+          )
+        ),
         '"'
       ),
 
     json_array: ($) =>
       seq(
         "[",
-        optional(seq(
-          $.json_value,
-          repeat(seq(",", $.json_value))
-        )),
+        optional(seq($.json_value, repeat(seq(",", $.json_value)))),
         "]"
       ),
 
     json_object: ($) =>
       seq(
         "{",
-        optional(seq(
-          $.json_object_pair,
-          repeat(seq(",", $.json_object_pair))
-        )),
+        optional(seq($.json_object_pair, repeat(seq(",", $.json_object_pair)))),
         "}"
       ),
 
-    json_object_pair: ($) =>
-      seq($.json_string, ":", $.json_value),
+    json_object_pair: ($) => seq($.json_string, ":", $.json_value),
 
     identifier: ($) => /[a-zA-Z][a-zA-Z0-9_]*/,
   },

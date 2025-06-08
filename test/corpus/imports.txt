@@ -1,0 +1,29 @@
+================================================================================
+Imports
+================================================================================
+
+module Module {
+
+import another.module.fail;
+import another.module2.*;
+
+};
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (import_declaration
+        (import_path
+          (scoped_name
+            (identifier)
+            (identifier)
+            (identifier))))
+      (import_declaration
+        (import_path
+          (scoped_name
+            (identifier)
+            (identifier)))))))

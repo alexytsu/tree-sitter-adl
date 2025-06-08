@@ -4,6 +4,7 @@ User-Defined Fields
 
 module input.hover {
     type Name = String;
+    type Imported = another.module.Atype;
 
     struct Content {
         String title;
@@ -13,6 +14,7 @@ module input.hover {
     struct Message {
         Name author;
         Content content;
+        another.module.Name another;
     };
 };
 
@@ -20,7 +22,7 @@ module input.hover {
 
 (source_file
   (module_definition
-    (module_name
+    (scoped_name
       (identifier)
       (identifier))
     (module_body
@@ -29,8 +31,16 @@ module input.hover {
           (identifier))
         (type_expression
           (primitive_type)))
+      (type_definition
+        (type_name
+          (identifier))
+        (type_expression
+          (scoped_name
+            (identifier)
+            (identifier)
+            (identifier))))
       (struct_definition
-        (struct_name
+        (type_name
           (identifier))
         (struct_body
           (struct_field
@@ -46,18 +56,29 @@ module input.hover {
             (field_name
               (identifier)))))
       (struct_definition
-        (struct_name
+        (type_name
           (identifier))
         (struct_body
           (struct_field
             (field_type
               (type_expression
-                (identifier)))
+                (scoped_name
+                  (identifier))))
             (field_name
               (identifier)))
           (struct_field
             (field_type
               (type_expression
-                (identifier)))
+                (scoped_name
+                  (identifier))))
+            (field_name
+              (identifier)))
+          (struct_field
+            (field_type
+              (type_expression
+                (scoped_name
+                  (identifier)
+                  (identifier)
+                  (identifier))))
             (field_name
               (identifier))))))))

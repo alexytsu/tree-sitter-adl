@@ -45,60 +45,62 @@ annotation MessageTable DbTable {
 
 (source_file
   (module_definition
-    (module_name
+    (scoped_name
       (identifier)
       (identifier))
     (module_body
       (import_declaration
         (import_path
-          (module_name
+          (scoped_name
             (identifier)
             (identifier)
             (identifier))))
       (import_declaration
         (import_path
-          (module_name
+          (scoped_name
             (identifier)
             (identifier)
             (identifier))))
       (import_declaration
         (import_path
-          (module_name
+          (scoped_name
             (identifier)
             (identifier)
             (identifier))))
       (import_declaration
         (import_path
-          (module_name
+          (scoped_name
             (identifier)
             (identifier)
             (identifier))))
       (import_declaration
         (import_path
-          (module_name
+          (scoped_name
             (identifier)
             (identifier)
             (identifier))))
       (import_declaration
         (import_path
-          (module_name
+          (scoped_name
             (identifier)
             (identifier)
             (identifier))))
       (struct_definition
-        (struct_name
+        (type_name
           (identifier))
         (struct_body
           (struct_field
             (field_type
               (type_expression
-                (identifier)))
+                (scoped_name
+                  (identifier))))
             (field_name
               (identifier)))
           (struct_field
             (field_type
               (type_expression
-                (identifier)))
+                (scoped_name
+                  (identifier))))
             (field_name
               (identifier)))
           (struct_field
@@ -110,7 +112,8 @@ annotation MessageTable DbTable {
           (struct_field
             (field_type
               (type_expression
-                (identifier)))
+                (scoped_name
+                  (identifier))))
             (field_name
               (identifier))
             (json_value
@@ -119,21 +122,27 @@ annotation MessageTable DbTable {
         (type_name
           (identifier))
         (type_expression
-          (identifier)
+          (scoped_name
+            (identifier))
           (type_arguments
             (type_expression
-              (identifier)))))
+              (scoped_name
+                (identifier))))))
       (type_definition
         (type_name
           (identifier))
         (type_expression
-          (identifier)
+          (scoped_name
+            (identifier))
           (type_arguments
             (type_expression
-              (identifier)))))
+              (scoped_name
+                (identifier))))))
       (annotation_declaration
-        (identifier)
-        (identifier)
+        (scoped_name
+          (identifier))
+        (scoped_name
+          (identifier))
         (json_object
           (json_object_pair
             (json_string)
@@ -156,46 +165,55 @@ annotation MessageTable DbTable {
             (json_value
               (json_string)))))
       (struct_definition
-        (struct_name
+        (type_name
           (identifier))
         (struct_body
           (struct_field
             (field_type
               (type_expression
-                (identifier)))
+                (scoped_name
+                  (identifier))))
             (field_name
               (identifier)))
           (struct_field
             (field_type
               (type_expression
-                (identifier)))
+                (scoped_name
+                  (identifier))))
             (field_name
               (identifier)))
           (struct_field
             (field_type
               (type_expression
-                (identifier)))
+                (scoped_name
+                  (identifier))))
             (field_name
               (identifier)))))
       (newtype_definition
         (type_name
           (identifier))
         (type_expression
-          (identifier)
+          (scoped_name
+            (identifier))
           (type_arguments
             (type_expression
-              (identifier)))))
+              (scoped_name
+                (identifier))))))
       (type_definition
         (type_name
           (identifier))
         (type_expression
-          (identifier)
+          (scoped_name
+            (identifier))
           (type_arguments
             (type_expression
-              (identifier)))))
+              (scoped_name
+                (identifier))))))
       (annotation_declaration
-        (identifier)
-        (identifier)
+        (scoped_name
+          (identifier))
+        (scoped_name
+          (identifier))
         (json_object
           (json_object_pair
             (json_string)

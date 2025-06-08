@@ -78,14 +78,14 @@ struct WithId<T>
 
 (source_file
   (module_definition
-    (module_name
+    (scoped_name
       (identifier)
       (identifier))
     (module_body
       (comment)
       (comment)
       (struct_definition
-        (struct_name
+        (type_name
           (identifier))
         (struct_body
           (comment)
@@ -167,7 +167,7 @@ struct WithId<T>
       (comment)
       (comment)
       (struct_definition
-        (struct_name
+        (type_name
           (identifier))
         (struct_body
           (comment)
@@ -181,41 +181,54 @@ struct WithId<T>
               (identifier))
             (json_value
               (json_string)))))
+      (docstring)
       (type_definition
-        (docstring)
+        (docstring_block
+          (docstring))
         (type_name
           (identifier))
         (type_expression
           (primitive_type)))
+      (docstring)
       (type_definition
-        (docstring)
+        (docstring_block
+          (docstring))
         (type_name
           (identifier))
         (type_expression
           (primitive_type)))
+      (docstring)
+      (docstring)
       (type_definition
-        (docstring)
+        (docstring_block
+          (docstring))
         (type_name
           (identifier))
         (type_expression
           (primitive_type)))
+      (docstring)
       (type_definition
-        (docstring)
+        (docstring_block
+          (docstring))
         (type_name
           (identifier))
         (type_expression
           (primitive_type)))
+      (docstring)
       (newtype_definition
-        (docstring)
+        (docstring_block
+          (docstring))
         (type_name
           (identifier))
         (type_parameters
           (identifier))
         (type_expression
           (primitive_type)))
+      (docstring)
       (struct_definition
-        (docstring)
-        (struct_name
+        (docstring_block
+          (docstring))
+        (type_name
           (identifier))
         (type_parameters
           (identifier))
@@ -223,7 +236,9 @@ struct WithId<T>
           (struct_field
             (annotations
               (annotation
-                (identifier)))
+                (annotation_name
+                  (scoped_name
+                    (identifier)))))
             (field_type
               (type_expression
                 (primitive_type)))
@@ -232,9 +247,12 @@ struct WithId<T>
           (struct_field
             (annotations
               (annotation
-                (identifier)))
+                (annotation_name
+                  (scoped_name
+                    (identifier)))))
             (field_type
               (type_expression
-                (identifier)))
+                (scoped_name
+                  (identifier))))
             (field_name
               (identifier))))))))

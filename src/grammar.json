@@ -6,6 +6,31 @@
       "type": "SYMBOL",
       "name": "module_definition"
     },
+    "scoped_name": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "."
+              },
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            ]
+          }
+        }
+      ]
+    },
     "module_definition": {
       "type": "SEQ",
       "members": [
@@ -15,42 +40,13 @@
         },
         {
           "type": "SYMBOL",
-          "name": "module_name"
+          "name": "scoped_name"
         },
         {
           "type": "SYMBOL",
           "name": "module_body"
         }
       ]
-    },
-    "module_name": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "identifier"
-          },
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "."
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                }
-              ]
-            }
-          }
-        ]
-      }
     },
     "module_body": {
       "type": "SEQ",
@@ -66,15 +62,15 @@
             "members": [
               {
                 "type": "SYMBOL",
+                "name": "docstring"
+              },
+              {
+                "type": "SYMBOL",
                 "name": "import_declaration"
               },
               {
                 "type": "SYMBOL",
-                "name": "struct_definition"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "union_definition"
+                "name": "annotation_declaration"
               },
               {
                 "type": "SYMBOL",
@@ -86,11 +82,11 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "annotation_declaration"
+                "name": "struct_definition"
               },
               {
                 "type": "SYMBOL",
-                "name": "docstring"
+                "name": "union_definition"
               }
             ]
           }
@@ -119,45 +115,23 @@
       ]
     },
     "import_path": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "module_name"
-            },
-            {
-              "type": "STRING",
-              "value": ".*"
-            }
-          ]
-        },
         {
           "type": "SYMBOL",
           "name": "scoped_name"
         },
         {
-          "type": "SYMBOL",
-          "name": "module_name"
-        }
-      ]
-    },
-    "scoped_name": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "module_name"
-        },
-        {
-          "type": "STRING",
-          "value": "."
-        },
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ".*"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -353,28 +327,11 @@
           "name": "scoped_name"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
           "type": "SEQ",
           "members": [
             {
               "type": "SYMBOL",
               "name": "scoped_name"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "type_arguments"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "identifier"
             },
             {
               "type": "SYMBOL",
@@ -567,7 +524,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "struct_name"
+          "name": "type_name"
         },
         {
           "type": "CHOICE",
@@ -586,10 +543,6 @@
           "name": "struct_body"
         }
       ]
-    },
-    "struct_name": {
-      "type": "SYMBOL",
-      "name": "identifier"
     },
     "struct_body": {
       "type": "SEQ",
@@ -706,7 +659,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "union_name"
+          "name": "type_name"
         },
         {
           "type": "CHOICE",
@@ -725,10 +678,6 @@
           "name": "union_body"
         }
       ]
-    },
-    "union_name": {
-      "type": "SYMBOL",
-      "name": "identifier"
     },
     "union_body": {
       "type": "SEQ",
@@ -827,40 +776,30 @@
         "name": "annotation"
       }
     },
+    "annotation_name": {
+      "type": "SYMBOL",
+      "name": "scoped_name"
+    },
     "annotation": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "annotation_name"
+        },
+        {
+          "type": "CHOICE",
           "members": [
             {
-              "type": "STRING",
-              "value": "@"
+              "type": "SYMBOL",
+              "name": "json_value"
             },
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "scoped_name"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                }
-              ]
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "json_value"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
+              "type": "BLANK"
             }
           ]
         }
@@ -887,11 +826,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "scoped_name"
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "scoped_name"
         },
         {
           "type": "SYMBOL",

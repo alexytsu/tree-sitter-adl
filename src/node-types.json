@@ -8,15 +8,11 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "annotation_name",
           "named": true
         },
         {
           "type": "json_value",
-          "named": true
-        },
-        {
-          "type": "scoped_name",
           "named": true
         }
       ]
@@ -35,11 +31,26 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "json_object",
           "named": true
         },
         {
-          "type": "json_object",
+          "type": "scoped_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "annotation_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "scoped_name",
           "named": true
         }
       ]
@@ -138,10 +149,6 @@
       "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "module_name",
-          "named": true
-        },
         {
           "type": "scoped_name",
           "named": true
@@ -282,22 +289,7 @@
           "named": true
         },
         {
-          "type": "module_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "module_name",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
+          "type": "scoped_name",
           "named": true
         }
       ]
@@ -364,10 +356,6 @@
         {
           "type": "identifier",
           "named": true
-        },
-        {
-          "type": "module_name",
-          "named": true
         }
       ]
     }
@@ -424,7 +412,7 @@
           "named": true
         },
         {
-          "type": "struct_name",
+          "type": "type_name",
           "named": true
         },
         {
@@ -460,21 +448,6 @@
         },
         {
           "type": "json_value",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "struct_name",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
           "named": true
         }
       ]
@@ -534,10 +507,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
         {
           "type": "primitive_type",
           "named": true
@@ -615,15 +584,15 @@
           "named": true
         },
         {
+          "type": "type_name",
+          "named": true
+        },
+        {
           "type": "type_parameters",
           "named": true
         },
         {
           "type": "union_body",
-          "named": true
-        },
-        {
-          "type": "union_name",
           "named": true
         }
       ]
@@ -655,21 +624,6 @@
         },
         {
           "type": "json_value",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "union_name",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
           "named": true
         }
       ]
