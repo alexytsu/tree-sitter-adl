@@ -87,7 +87,7 @@ struct WithId<T>
       (struct_definition
         (type_name
           (identifier))
-        (struct_body
+        (field_block
           (comment)
           (comment)
           (comment)
@@ -157,7 +157,7 @@ struct WithId<T>
       (struct_definition
         (type_name
           (identifier))
-        (struct_body
+        (field_block
           (comment)
           (comment)
           (comment)
@@ -218,22 +218,20 @@ struct WithId<T>
           (identifier))
         (type_parameters
           (identifier))
-        (struct_body
+        (field_block
           (field
             (annotations
               (annotation
-                (annotation_name
-                  (scoped_name
-                    (identifier)))))
+                (scoped_name
+                  (identifier))))
             (type_expression
               (primitive_type))
             (identifier))
           (field
             (annotations
               (annotation
-                (annotation_name
-                  (scoped_name
-                    (identifier)))))
+                (scoped_name
+                  (identifier))))
             (type_expression
               (scoped_name
                 (identifier)))

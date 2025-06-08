@@ -88,7 +88,7 @@ annotation MessageTable DbTable {
       (struct_definition
         (type_name
           (identifier))
-        (struct_body
+        (field_block
           (field
             (type_expression
               (scoped_name
@@ -159,7 +159,7 @@ annotation MessageTable DbTable {
       (struct_definition
         (type_name
           (identifier))
-        (struct_body
+        (field_block
           (field
             (type_expression
               (scoped_name

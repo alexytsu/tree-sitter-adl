@@ -22,7 +22,7 @@ union Union {
       (union_definition
         (type_name
           (identifier))
-        (union_body
+        (field_block
           (field
             (type_expression
               (primitive_type))

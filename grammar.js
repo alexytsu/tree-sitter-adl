@@ -112,10 +112,8 @@ module.exports = grammar({
         "struct",
         $.type_name,
         optional($.type_parameters),
-        $.struct_body
+        $.field_block
       ),
-
-    struct_body: ($) => seq("{", repeat($.field), "};"),
 
     union_definition: ($) =>
       seq(
@@ -124,10 +122,10 @@ module.exports = grammar({
         "union",
         $.type_name,
         optional($.type_parameters),
-        $.union_body
+        $.field_block
       ),
 
-    union_body: ($) => seq("{", repeat($.field), "};"),
+    field_block: ($) => seq("{", repeat($.field), "};"),
 
     field: ($) =>
       seq(
@@ -139,11 +137,9 @@ module.exports = grammar({
         ";"
       ),
 
+    annotation: ($) => seq("@", $.scoped_name, optional($.json_value)),
+
     annotations: ($) => repeat1($.annotation),
-
-    annotation_name: ($) => $.scoped_name,
-
-    annotation: ($) => seq("@", $.annotation_name, optional($.json_value)),
 
     annotation_declaration: ($) =>
       seq(

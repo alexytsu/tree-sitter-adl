@@ -540,27 +540,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "struct_body"
-        }
-      ]
-    },
-    "struct_body": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "{"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "field"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "};"
+          "name": "field_block"
         }
       ]
     },
@@ -613,11 +593,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "union_body"
+          "name": "field_block"
         }
       ]
     },
-    "union_body": {
+    "field_block": {
       "type": "SEQ",
       "members": [
         {
@@ -699,17 +679,6 @@
         }
       ]
     },
-    "annotations": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SYMBOL",
-        "name": "annotation"
-      }
-    },
-    "annotation_name": {
-      "type": "SYMBOL",
-      "name": "scoped_name"
-    },
     "annotation": {
       "type": "SEQ",
       "members": [
@@ -719,7 +688,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "annotation_name"
+          "name": "scoped_name"
         },
         {
           "type": "CHOICE",
@@ -734,6 +703,13 @@
           ]
         }
       ]
+    },
+    "annotations": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "annotation"
+      }
     },
     "annotation_declaration": {
       "type": "SEQ",

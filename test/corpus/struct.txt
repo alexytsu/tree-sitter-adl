@@ -22,7 +22,7 @@ struct Struct {
       (struct_definition
         (type_name
           (identifier))
-        (struct_body
+        (field_block
           (field
             (type_expression
               (primitive_type))
