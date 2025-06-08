@@ -87,6 +87,10 @@
               {
                 "type": "SYMBOL",
                 "name": "annotation_declaration"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "docstring"
               }
             ]
           }
@@ -177,7 +181,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "docstring"
+              "name": "docstring_block"
             },
             {
               "type": "BLANK"
@@ -238,7 +242,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "docstring"
+              "name": "docstring_block"
             },
             {
               "type": "BLANK"
@@ -550,7 +554,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "docstring"
+              "name": "docstring_block"
             },
             {
               "type": "BLANK"
@@ -627,7 +631,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "docstring"
+              "name": "docstring_block"
             },
             {
               "type": "BLANK"
@@ -689,7 +693,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "docstring"
+              "name": "docstring_block"
             },
             {
               "type": "BLANK"
@@ -766,7 +770,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "docstring"
+              "name": "docstring_block"
             },
             {
               "type": "BLANK"
@@ -870,7 +874,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "docstring"
+              "name": "docstring_block"
             },
             {
               "type": "BLANK"
@@ -913,19 +917,23 @@
       ]
     },
     "docstring": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "///"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\n]*"
+        }
+      ]
+    },
+    "docstring_block": {
       "type": "REPEAT1",
       "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "///"
-          },
-          {
-            "type": "PATTERN",
-            "value": "[^\\n]*"
-          }
-        ]
+        "type": "SYMBOL",
+        "name": "docstring"
       }
     },
     "json_value": {
@@ -1173,7 +1181,12 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "module_body",
+      "docstring_block"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],
