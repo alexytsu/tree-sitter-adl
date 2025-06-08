@@ -91,77 +91,65 @@ struct WithId<T>
           (comment)
           (comment)
           (comment)
-          (struct_field
-            (field_type
-              (type_expression
-                (primitive_type)))
-            (field_name
-              (identifier))
+          (field
+            (type_expression
+              (primitive_type))
+            (identifier)
             (json_value
               (json_string)))
           (comment)
-          (struct_field
-            (field_type
-              (type_expression
-                (primitive_type
-                  (type_arguments
-                    (type_expression
-                      (primitive_type
-                        (type_arguments
-                          (type_expression
-                            (primitive_type)))))))))
-            (field_name
-              (identifier))
+          (field
+            (type_expression
+              (primitive_type
+                (type_arguments
+                  (type_expression
+                    (primitive_type
+                      (type_arguments
+                        (type_expression
+                          (primitive_type))))))))
+            (identifier)
             (json_value
               (json_array)))
           (comment)
-          (struct_field
-            (field_type
-              (type_expression
-                (primitive_type
-                  (type_arguments
-                    (type_expression
-                      (primitive_type
-                        (type_arguments
-                          (type_expression
-                            (primitive_type)))))))))
-            (field_name
-              (identifier))
+          (field
+            (type_expression
+              (primitive_type
+                (type_arguments
+                  (type_expression
+                    (primitive_type
+                      (type_arguments
+                        (type_expression
+                          (primitive_type))))))))
+            (identifier)
             (json_value
               (json_array)))
           (comment)
           (comment)
-          (struct_field
-            (field_type
-              (type_expression
-                (primitive_type
-                  (type_arguments
-                    (type_expression
-                      (primitive_type))))))
-            (field_name
-              (identifier))
+          (field
+            (type_expression
+              (primitive_type
+                (type_arguments
+                  (type_expression
+                    (primitive_type)))))
+            (identifier)
             (json_value
               (json_array)))
           (comment)
           (comment)
-          (struct_field
-            (field_type
-              (type_expression
-                (primitive_type
-                  (type_arguments
-                    (type_expression
-                      (primitive_type))))))
-            (field_name
-              (identifier))
+          (field
+            (type_expression
+              (primitive_type
+                (type_arguments
+                  (type_expression
+                    (primitive_type)))))
+            (identifier)
             (json_value
               (json_array)))
           (comment)
-          (struct_field
-            (field_type
-              (type_expression
-                (primitive_type)))
-            (field_name
-              (identifier))
+          (field
+            (type_expression
+              (primitive_type))
+            (identifier)
             (json_value
               (json_string)))))
       (comment)
@@ -173,12 +161,10 @@ struct WithId<T>
           (comment)
           (comment)
           (comment)
-          (struct_field
-            (field_type
-              (type_expression
-                (primitive_type)))
-            (field_name
-              (identifier))
+          (field
+            (type_expression
+              (primitive_type))
+            (identifier)
             (json_value
               (json_string)))))
       (docstring)
@@ -233,26 +219,22 @@ struct WithId<T>
         (type_parameters
           (identifier))
         (struct_body
-          (struct_field
+          (field
             (annotations
               (annotation
                 (annotation_name
                   (scoped_name
                     (identifier)))))
-            (field_type
-              (type_expression
-                (primitive_type)))
-            (field_name
-              (identifier)))
-          (struct_field
+            (type_expression
+              (primitive_type))
+            (identifier))
+          (field
             (annotations
               (annotation
                 (annotation_name
                   (scoped_name
                     (identifier)))))
-            (field_type
-              (type_expression
-                (scoped_name
-                  (identifier))))
-            (field_name
-              (identifier))))))))
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (identifier)))))))

@@ -23,21 +23,15 @@ union Union {
         (type_name
           (identifier))
         (union_body
-          (union_field
-            (field_type
-              (type_expression
-                (primitive_type)))
-            (field_name
-              (identifier)))
-          (union_field
-            (field_type
-              (type_expression
-                (primitive_type)))
-            (field_name
-              (identifier)))
-          (union_field
-            (field_type
-              (type_expression
-                (primitive_type)))
-            (field_name
-              (identifier))))))))
+          (field
+            (type_expression
+              (primitive_type))
+            (identifier))
+          (field
+            (type_expression
+              (primitive_type))
+            (identifier))
+          (field
+            (type_expression
+              (primitive_type))
+            (identifier)))))))

@@ -555,74 +555,12 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "struct_field"
+            "name": "field"
           }
         },
         {
           "type": "STRING",
           "value": "};"
-        }
-      ]
-    },
-    "struct_field": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "annotations"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "docstring_block"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "field_type"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "field_name"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "="
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "json_value"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": ";"
         }
       ]
     },
@@ -690,7 +628,7 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "union_field"
+            "name": "field"
           }
         },
         {
@@ -699,7 +637,7 @@
         }
       ]
     },
-    "union_field": {
+    "field": {
       "type": "SEQ",
       "members": [
         {
@@ -728,11 +666,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "field_type"
+          "name": "type_expression"
         },
         {
           "type": "SYMBOL",
-          "name": "field_name"
+          "name": "identifier"
         },
         {
           "type": "CHOICE",
@@ -760,14 +698,6 @@
           "value": ";"
         }
       ]
-    },
-    "field_type": {
-      "type": "SYMBOL",
-      "name": "type_expression"
-    },
-    "field_name": {
-      "type": "SYMBOL",
-      "name": "identifier"
     },
     "annotations": {
       "type": "REPEAT1",

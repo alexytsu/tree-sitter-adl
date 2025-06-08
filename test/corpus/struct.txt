@@ -23,21 +23,15 @@ struct Struct {
         (type_name
           (identifier))
         (struct_body
-          (struct_field
-            (field_type
-              (type_expression
-                (primitive_type)))
-            (field_name
-              (identifier)))
-          (struct_field
-            (field_type
-              (type_expression
-                (primitive_type)))
-            (field_name
-              (identifier)))
-          (struct_field
-            (field_type
-              (type_expression
-                (primitive_type)))
-            (field_name
-              (identifier))))))))
+          (field
+            (type_expression
+              (primitive_type))
+            (identifier))
+          (field
+            (type_expression
+              (primitive_type))
+            (identifier))
+          (field
+            (type_expression
+              (primitive_type))
+            (identifier)))))))
