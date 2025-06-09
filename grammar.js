@@ -147,7 +147,7 @@ module.exports = grammar({
         "annotation",
         $.scoped_name,
         $.scoped_name,
-        $.json_object,
+        $.json_value,
         ";"
       ),
 

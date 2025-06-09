@@ -1,0 +1,40 @@
+================================================================================
+Gnarly
+================================================================================
+
+module gnarly.json.module {
+
+annotation PaymentStatusView DbView {
+  "withIdPrimaryKey" : true,
+  "viewSql": [
+    "create view payment_status_view as",
+    "select ",
+    "		pr.user_id id,",
+    "		pr.transaction_id transaction_id,",
+    "   pr.id payment_id,",
+    "		pr.due_date payment_due_date,",
+    "		pr.amount payment_amount,",
+    "		pr.events events,",
+    "		case when (select count(v->>'v2') > 0 from jsonb_array_elements(pr.events) as v where (v->>'v2')::jsonb ? 'completed') then 'completed'",
+    "		     when (select count(v->>'v2') > 0 from jsonb_array_elements(pr.events) as v where (v->>'v2')::jsonb ? 'failed') then 'failed'",
+    "		     else null",
+    "	    end as status,",
+    "	    case when (select count(v->>'v2') > 0 from jsonb_array_elements(pr.events) as v where (v->>'v2')::jsonb ? 'completed') then null",
+    "		     when (select count(v->>'v2') > 0 from jsonb_array_elements(pr.events) as v where (v->>'v2')::jsonb ? 'failed') then (current_date - pr.due_date)",
+    "		     else null",
+    "	    end as days_overdue,",
+    "       t.created_at transaction_time,",
+    "       (select count(v) > 0 from jsonb_array_elements(pr.failure_events) as v where v->>'accountLocked' is not null) as account_was_locked",
+    "from payment_records pr",
+    "left outer join transactions t on (pr.transaction_id = t.id)",
+    "order by pr.due_date desc;"
+  ]
+};
+annotation PaymentStatusView FormGroupKey "views";
+
+};
+
+
+--------------------------------------------------------------------------------
+
+()

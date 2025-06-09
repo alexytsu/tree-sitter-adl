@@ -31,7 +31,7 @@
           "named": true
         },
         {
-          "type": "json_object",
+          "type": "json_value",
           "named": true
         },
         {

@@ -740,7 +740,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "json_object"
+          "name": "json_value"
         },
         {
           "type": "STRING",
