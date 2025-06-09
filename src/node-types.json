@@ -207,11 +207,6 @@
     }
   },
   {
-    "type": "json_string",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "json_value",
     "named": true,
     "fields": {},
@@ -539,10 +534,6 @@
     }
   },
   {
-    "type": "\"",
-    "named": false
-  },
-  {
     "type": ",",
     "named": false
   },
@@ -552,10 +543,6 @@
   },
   {
     "type": ".*",
-    "named": false
-  },
-  {
-    "type": "/",
     "named": false
   },
   {
@@ -671,23 +658,11 @@
     "named": false
   },
   {
-    "type": "\\",
-    "named": false
-  },
-  {
     "type": "]",
     "named": false
   },
   {
     "type": "annotation",
-    "named": false
-  },
-  {
-    "type": "b",
-    "named": false
-  },
-  {
-    "type": "f",
     "named": false
   },
   {
@@ -707,11 +682,11 @@
     "named": true
   },
   {
-    "type": "module",
-    "named": false
+    "type": "json_string",
+    "named": true
   },
   {
-    "type": "n",
+    "type": "module",
     "named": false
   },
   {
@@ -723,15 +698,7 @@
     "named": false
   },
   {
-    "type": "r",
-    "named": false
-  },
-  {
     "type": "struct",
-    "named": false
-  },
-  {
-    "type": "t",
     "named": false
   },
   {
@@ -740,10 +707,6 @@
   },
   {
     "type": "type",
-    "named": false
-  },
-  {
-    "type": "u",
     "named": false
   },
   {

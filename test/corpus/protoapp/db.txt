@@ -135,27 +135,28 @@ annotation MessageTable DbTable {
           (identifier))
         (scoped_name
           (identifier))
-        (json_object
-          (json_object_pair
-            (json_string)
-            (json_value
-              (json_array
-                (json_value
-                  (json_array
-                    (json_value
-                      (json_string)))))))
-          (json_object_pair
-            (json_string)
-            (json_value
-              (json_array
-                (json_value
-                  (json_array
-                    (json_value
-                      (json_string)))))))
-          (json_object_pair
-            (json_string)
-            (json_value
-              (json_string)))))
+        (json_value
+          (json_object
+            (json_object_pair
+              (json_string)
+              (json_value
+                (json_array
+                  (json_value
+                    (json_array
+                      (json_value
+                        (json_string)))))))
+            (json_object_pair
+              (json_string)
+              (json_value
+                (json_array
+                  (json_value
+                    (json_array
+                      (json_value
+                        (json_string)))))))
+            (json_object_pair
+              (json_string)
+              (json_value
+                (json_string))))))
       (struct_definition
         (type_name
           (identifier))
@@ -200,16 +201,17 @@ annotation MessageTable DbTable {
           (identifier))
         (scoped_name
           (identifier))
-        (json_object
-          (json_object_pair
-            (json_string)
-            (json_value
-              (json_array
-                (json_value
-                  (json_array
-                    (json_value
-                      (json_string)))))))
-          (json_object_pair
-            (json_string)
-            (json_value
-              (json_string))))))))
+        (json_value
+          (json_object
+            (json_object_pair
+              (json_string)
+              (json_value
+                (json_array
+                  (json_value
+                    (json_array
+                      (json_value
+                        (json_string)))))))
+            (json_object_pair
+              (json_string)
+              (json_value
+                (json_string)))))))))

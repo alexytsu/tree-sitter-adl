@@ -32,9 +32,93 @@ annotation PaymentStatusView DbView {
 };
 annotation PaymentStatusView FormGroupKey "views";
 
+struct OverrideApiUrl {
+    StringNE url = "{\"API_URL\":\"https://mobile.banking-app.com/_a\"}";
+};
+
 };
 
 
 --------------------------------------------------------------------------------
 
-()
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier)
+      (identifier)
+      (identifier))
+    (module_body
+      (annotation_declaration
+        (scoped_name
+          (identifier))
+        (scoped_name
+          (identifier))
+        (json_value
+          (json_object
+            (json_object_pair
+              (json_string)
+              (json_value))
+            (json_object_pair
+              (json_string)
+              (json_value
+                (json_array
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))
+                  (json_value
+                    (json_string))))))))
+      (annotation_declaration
+        (scoped_name
+          (identifier))
+        (scoped_name
+          (identifier))
+        (json_value
+          (json_string)))
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (identifier)
+            (json_value
+              (json_string))))))))

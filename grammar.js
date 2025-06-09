@@ -171,28 +171,30 @@ module.exports = grammar({
     json_number: ($) => /-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/,
 
     json_string: ($) =>
-      seq(
-        '"',
-        repeat(
-          choice(
-            /[^"\\]/,
-            seq(
-              "\\",
-              choice(
-                '"',
+      token(
+        seq(
+          '"',
+          repeat(
+            choice(
+              /[^"\\]/,
+              seq(
                 "\\",
-                "/",
-                "b",
-                "f",
-                "n",
-                "r",
-                "t",
-                seq("u", /[0-9a-fA-F]{4}/)
+                choice(
+                  '"',
+                  "\\",
+                  "/",
+                  "b",
+                  "f",
+                  "n",
+                  "r",
+                  "t",
+                  seq("u", /[0-9a-fA-F]{4}/)
+                )
               )
             )
-          )
-        ),
-        '"'
+          ),
+          '"'
+        )
       ),
 
     json_array: ($) =>
