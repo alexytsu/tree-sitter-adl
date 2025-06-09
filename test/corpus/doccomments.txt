@@ -1,0 +1,51 @@
+================================================================================
+Doccomments
+================================================================================
+
+module module {
+
+import another.module.fail;
+import another.module2.*;
+
+
+/// Struct doccomment
+struct Content {
+    /// Title doccomment
+    String title;
+};
+
+/// Errant doccomment
+
+};
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (import_declaration
+        (import_path
+          (scoped_name
+            (identifier)
+            (identifier)
+            (identifier))))
+      (import_declaration
+        (import_path
+          (scoped_name
+            (identifier)
+            (identifier))))
+      (struct_definition
+        (docstring_block
+          (docstring))
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (docstring_block
+              (docstring))
+            (type_expression
+              (primitive_type))
+            (identifier))))
+      (docstring))))
