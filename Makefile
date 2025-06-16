@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-adl
 HOMEPAGE_URL := https://github.com/alexytsu/tree-sitter-adl
-VERSION := 0.4.0
+VERSION := 0.4.1
 
 # repository
 SRC_DIR := src
