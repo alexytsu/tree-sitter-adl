@@ -31,9 +31,37 @@
         }
       ]
     },
+    "definition_preamble": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "annotation"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "docstring"
+          }
+        ]
+      }
+    },
     "module_definition": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "definition_preamble"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
         {
           "type": "STRING",
           "value": "module"
@@ -60,10 +88,6 @@
           "content": {
             "type": "CHOICE",
             "members": [
-              {
-                "type": "SYMBOL",
-                "name": "docstring"
-              },
               {
                 "type": "SYMBOL",
                 "name": "import_declaration"
@@ -143,19 +167,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "annotations"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "docstring_block"
+              "name": "definition_preamble"
             },
             {
               "type": "BLANK"
@@ -204,19 +216,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "annotations"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "docstring_block"
+              "name": "definition_preamble"
             },
             {
               "type": "BLANK"
@@ -499,19 +499,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "annotations"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "docstring_block"
+              "name": "definition_preamble"
             },
             {
               "type": "BLANK"
@@ -552,19 +540,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "annotations"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "docstring_block"
+              "name": "definition_preamble"
             },
             {
               "type": "BLANK"
@@ -625,19 +601,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "annotations"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "docstring_block"
+              "name": "definition_preamble"
             },
             {
               "type": "BLANK"
@@ -719,7 +683,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "docstring_block"
+              "name": "definition_preamble"
             },
             {
               "type": "BLANK"
@@ -773,13 +737,6 @@
           "value": "[^\\n]*"
         }
       ]
-    },
-    "docstring_block": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SYMBOL",
-        "name": "docstring"
-      }
     },
     "json_value": {
       "type": "CHOICE",
@@ -1029,12 +986,7 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [
-    [
-      "module_body",
-      "docstring_block"
-    ]
-  ],
+  "conflicts": [],
   "precedences": [],
   "externals": [],
   "inline": [],

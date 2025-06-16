@@ -12,21 +12,26 @@ module.exports = grammar({
 
   extras: ($) => [$.comment, /\s/],
 
-  conflicts: ($) => [[$.module_body, $.docstring_block]],
-
   rules: {
     source_file: ($) => $.module_definition,
 
     scoped_name: ($) => seq($.identifier, repeat(seq(".", $.identifier))),
 
-    module_definition: ($) => seq("module", $.scoped_name, $.module_body),
+    definition_preamble: ($) => repeat1(choice($.annotation, $.docstring)),
+
+    module_definition: ($) =>
+      seq(
+        optional($.definition_preamble),
+        "module",
+        $.scoped_name,
+        $.module_body
+      ),
 
     module_body: ($) =>
       seq(
         "{",
         repeat(
           choice(
-            $.docstring,
             $.import_declaration,
             $.annotation_declaration,
             $.type_definition,
@@ -44,8 +49,7 @@ module.exports = grammar({
 
     type_definition: ($) =>
       seq(
-        optional($.annotations),
-        optional($.docstring_block),
+        optional($.definition_preamble),
         "type",
         $.type_name,
         optional($.type_parameters),
@@ -56,8 +60,7 @@ module.exports = grammar({
 
     newtype_definition: ($) =>
       seq(
-        optional($.annotations),
-        optional($.docstring_block),
+        optional($.definition_preamble),
         "newtype",
         $.type_name,
         optional($.type_parameters),
@@ -107,8 +110,7 @@ module.exports = grammar({
 
     struct_definition: ($) =>
       seq(
-        optional($.annotations),
-        optional($.docstring_block),
+        optional($.definition_preamble),
         "struct",
         $.type_name,
         optional($.type_parameters),
@@ -117,8 +119,7 @@ module.exports = grammar({
 
     union_definition: ($) =>
       seq(
-        optional($.annotations),
-        optional($.docstring_block),
+        optional($.definition_preamble),
         "union",
         $.type_name,
         optional($.type_parameters),
@@ -129,8 +130,7 @@ module.exports = grammar({
 
     field: ($) =>
       seq(
-        optional($.annotations),
-        optional($.docstring_block),
+        optional($.definition_preamble),
         $.type_expression,
         $.identifier,
         optional(seq("=", $.json_value)),
@@ -143,7 +143,7 @@ module.exports = grammar({
 
     annotation_declaration: ($) =>
       seq(
-        optional($.docstring_block),
+        optional($.definition_preamble),
         "annotation",
         $.scoped_name,
         $.scoped_name,
@@ -154,8 +154,6 @@ module.exports = grammar({
     comment: ($) => seq("//", /[^\n]*/),
 
     docstring: ($) => seq("///", /[^\n]*/),
-
-    docstring_block: ($) => repeat1($.docstring),
 
     json_value: ($) =>
       choice(

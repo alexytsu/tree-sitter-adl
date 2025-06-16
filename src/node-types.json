@@ -27,7 +27,7 @@
       "required": true,
       "types": [
         {
-          "type": "docstring_block",
+          "type": "definition_preamble",
           "named": true
         },
         {
@@ -42,7 +42,12 @@
     }
   },
   {
-    "type": "annotations",
+    "type": "comment",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "definition_preamble",
     "named": true,
     "fields": {},
     "children": {
@@ -52,34 +57,18 @@
         {
           "type": "annotation",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "comment",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "docstring",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "docstring_block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
+        },
         {
           "type": "docstring",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "docstring",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "field",
@@ -90,11 +79,7 @@
       "required": true,
       "types": [
         {
-          "type": "annotations",
-          "named": true
-        },
-        {
-          "type": "docstring_block",
+          "type": "definition_preamble",
           "named": true
         },
         {
@@ -246,10 +231,6 @@
           "named": true
         },
         {
-          "type": "docstring",
-          "named": true
-        },
-        {
           "type": "import_declaration",
           "named": true
         },
@@ -281,6 +262,10 @@
       "required": true,
       "types": [
         {
+          "type": "definition_preamble",
+          "named": true
+        },
+        {
           "type": "module_body",
           "named": true
         },
@@ -300,11 +285,7 @@
       "required": true,
       "types": [
         {
-          "type": "annotations",
-          "named": true
-        },
-        {
-          "type": "docstring_block",
+          "type": "definition_preamble",
           "named": true
         },
         {
@@ -381,11 +362,7 @@
       "required": true,
       "types": [
         {
-          "type": "annotations",
-          "named": true
-        },
-        {
-          "type": "docstring_block",
+          "type": "definition_preamble",
           "named": true
         },
         {
@@ -427,11 +404,7 @@
       "required": true,
       "types": [
         {
-          "type": "annotations",
-          "named": true
-        },
-        {
-          "type": "docstring_block",
+          "type": "definition_preamble",
           "named": true
         },
         {
@@ -511,11 +484,7 @@
       "required": true,
       "types": [
         {
-          "type": "annotations",
-          "named": true
-        },
-        {
-          "type": "docstring_block",
+          "type": "definition_preamble",
           "named": true
         },
         {

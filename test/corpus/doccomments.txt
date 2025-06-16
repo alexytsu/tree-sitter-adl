@@ -14,8 +14,6 @@ struct Content {
     String title;
 };
 
-/// Errant doccomment
-
 };
 
 --------------------------------------------------------------------------------
@@ -37,15 +35,14 @@ struct Content {
             (identifier)
             (identifier))))
       (struct_definition
-        (docstring_block
+        (definition_preamble
           (docstring))
         (type_name
           (identifier))
         (field_block
           (field
-            (docstring_block
+            (definition_preamble
               (docstring))
             (type_expression
               (primitive_type))
-            (identifier))))
-      (docstring))))
+            (identifier)))))))

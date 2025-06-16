@@ -167,42 +167,42 @@ struct WithId<T>
             (identifier)
             (json_value
               (json_string)))))
-      (docstring)
       (type_definition
-        (docstring_block
+        (definition_preamble
+          (docstring)
           (docstring))
         (type_name
           (identifier))
         (type_expression
           (primitive_type)))
-      (docstring)
       (type_definition
-        (docstring_block
+        (definition_preamble
+          (docstring)
           (docstring))
         (type_name
           (identifier))
         (type_expression
           (primitive_type)))
-      (docstring)
-      (docstring)
       (type_definition
-        (docstring_block
+        (definition_preamble
+          (docstring)
+          (docstring)
           (docstring))
         (type_name
           (identifier))
         (type_expression
           (primitive_type)))
-      (docstring)
       (type_definition
-        (docstring_block
+        (definition_preamble
+          (docstring)
           (docstring))
         (type_name
           (identifier))
         (type_expression
           (primitive_type)))
-      (docstring)
       (newtype_definition
-        (docstring_block
+        (definition_preamble
+          (docstring)
           (docstring))
         (type_name
           (identifier))
@@ -210,9 +210,9 @@ struct WithId<T>
           (identifier))
         (type_expression
           (primitive_type)))
-      (docstring)
       (struct_definition
-        (docstring_block
+        (definition_preamble
+          (docstring)
           (docstring))
         (type_name
           (identifier))
@@ -220,7 +220,7 @@ struct WithId<T>
           (identifier))
         (field_block
           (field
-            (annotations
+            (definition_preamble
               (annotation
                 (scoped_name
                   (identifier))))
@@ -228,7 +228,7 @@ struct WithId<T>
               (primitive_type))
             (identifier))
           (field
-            (annotations
+            (definition_preamble
               (annotation
                 (scoped_name
                   (identifier))))
