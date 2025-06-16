@@ -30,9 +30,9 @@ module.exports = grammar({
     module_body: ($) =>
       seq(
         "{",
+        repeat($.import_declaration),
         repeat(
           choice(
-            $.import_declaration,
             $.annotation_declaration,
             $.type_definition,
             $.newtype_definition,
