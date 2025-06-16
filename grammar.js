@@ -145,7 +145,10 @@ module.exports = grammar({
       seq(
         optional($.definition_preamble),
         "annotation",
-        $.scoped_name,
+        choice(
+          $.scoped_name,
+          seq($.scoped_name, "::", $.identifier)
+        ),
         $.scoped_name,
         $.json_value,
         ";"
