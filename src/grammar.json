@@ -86,15 +86,12 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "import_declaration"
-          }
-        },
-        {
-          "type": "REPEAT",
-          "content": {
             "type": "CHOICE",
             "members": [
+              {
+                "type": "SYMBOL",
+                "name": "import_declaration"
+              },
               {
                 "type": "SYMBOL",
                 "name": "annotation_declaration"
@@ -717,7 +714,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "identifier"
+                  "name": "field_reference"
                 }
               ]
             }
@@ -734,6 +731,15 @@
         {
           "type": "STRING",
           "value": ";"
+        }
+      ]
+    },
+    "field_reference": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
         }
       ]
     },

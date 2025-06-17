@@ -30,9 +30,9 @@ module.exports = grammar({
     module_body: ($) =>
       seq(
         "{",
-        repeat($.import_declaration),
         repeat(
           choice(
+            $.import_declaration,
             $.annotation_declaration,
             $.type_definition,
             $.newtype_definition,
@@ -145,14 +145,13 @@ module.exports = grammar({
       seq(
         optional($.definition_preamble),
         "annotation",
-        choice(
-          $.scoped_name,
-          seq($.scoped_name, "::", $.identifier)
-        ),
+        choice($.scoped_name, seq($.scoped_name, "::", $.field_reference)),
         $.scoped_name,
         $.json_value,
         ";"
       ),
+
+    field_reference: ($) => seq($.identifier),
 
     comment: ($) => seq("//", /[^\n]*/),
 

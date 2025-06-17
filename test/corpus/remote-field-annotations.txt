@@ -44,7 +44,8 @@ annotation Struct::name FieldAnnotation {
       (annotation_declaration
         (scoped_name
           (identifier))
-        (identifier)
+        (field_reference
+          (identifier))
         (scoped_name
           (identifier))
         (json_value
