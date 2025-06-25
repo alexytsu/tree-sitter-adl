@@ -42,10 +42,12 @@ module.exports = grammar({
             $.union_definition
           )
         ),
-        "};"
+        "}",
+        optional(";")
       ),
 
-    import_declaration: ($) => seq("import", $.import_path, ";"),
+    import_declaration: ($) =>
+      seq("import", optional($.import_path), optional(";")),
 
     import_path: ($) => seq($.scoped_name, optional(".*")),
 
@@ -96,7 +98,7 @@ module.exports = grammar({
         "=",
         $.type_expression,
         optional(seq("=", $.json_value)),
-        ";"
+        optional(";")
       ),
 
     type_definition: ($) =>
@@ -107,7 +109,7 @@ module.exports = grammar({
         optional($.type_parameters),
         "=",
         $.type_expression,
-        ";"
+        optional(";")
       ),
 
     struct_definition: ($) =>
@@ -116,7 +118,7 @@ module.exports = grammar({
         "struct",
         $.type_name,
         optional($.type_parameters),
-        $.field_block
+        optional($.field_block)
       ),
 
     union_definition: ($) =>
@@ -125,10 +127,10 @@ module.exports = grammar({
         "union",
         $.type_name,
         optional($.type_parameters),
-        $.field_block
+        optional($.field_block)
       ),
 
-    field_block: ($) => seq("{", repeat($.field), "};"),
+    field_block: ($) => seq("{", repeat($.field), "}", optional(";")),
 
     field: ($) =>
       seq(
@@ -136,7 +138,7 @@ module.exports = grammar({
         $.type_expression,
         $.identifier,
         optional(seq("=", $.json_value)),
-        ";"
+        optional(";")
       ),
 
     annotation: ($) => seq("@", $.scoped_name, optional($.json_value)),
@@ -150,7 +152,7 @@ module.exports = grammar({
         seq($.scoped_name, repeat(seq("::", $.field_reference))),
         $.scoped_name,
         $.json_value,
-        ";"
+        optional(";")
       ),
 
     field_reference: ($) => seq($.identifier),
