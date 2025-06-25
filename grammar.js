@@ -14,10 +14,13 @@ module.exports = grammar({
 
   word: ($) => $.identifier,
 
+  // conflicts: ($) => [[$.import_declaration, $.partial_import_declaration]],
+
   rules: {
     source_file: ($) => optional($.module_definition),
 
-    scoped_name: ($) => seq($.identifier, repeat(seq(".", $.identifier))),
+    scoped_name: ($) =>
+      seq($.identifier, repeat(seq(".", optional($.identifier)))),
 
     definition_preamble: ($) => repeat1(choice($.annotation, $.docstring)),
 
@@ -35,7 +38,6 @@ module.exports = grammar({
         repeat(
           choice(
             $.import_declaration,
-            $.annotation_declaration,
             $.type_definition,
             $.newtype_definition,
             $.struct_definition,
@@ -47,7 +49,12 @@ module.exports = grammar({
       ),
 
     import_declaration: ($) =>
-      seq("import", optional($.import_path), optional(";")),
+      choice(
+        $.partial_import_declaration,
+        seq("import", $.import_path, optional(";"))
+      ),
+
+    partial_import_declaration: ($) => "import",
 
     import_path: ($) => seq($.scoped_name, optional(".*")),
 

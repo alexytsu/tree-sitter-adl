@@ -32,8 +32,16 @@
                 "value": "."
               },
               {
-                "type": "SYMBOL",
-                "name": "identifier"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
               }
             ]
           }
@@ -103,10 +111,6 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "annotation_declaration"
-              },
-              {
-                "type": "SYMBOL",
                 "name": "type_definition"
               },
               {
@@ -143,37 +147,42 @@
       ]
     },
     "import_declaration": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "import"
+          "type": "SYMBOL",
+          "name": "partial_import_declaration"
         },
         {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
+            {
+              "type": "STRING",
+              "value": "import"
+            },
             {
               "type": "SYMBOL",
               "name": "import_path"
             },
             {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": ";"
-            },
-            {
-              "type": "BLANK"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ";"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
         }
       ]
+    },
+    "partial_import_declaration": {
+      "type": "STRING",
+      "value": "import"
     },
     "import_path": {
       "type": "SEQ",

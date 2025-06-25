@@ -2,7 +2,7 @@
 Imports
 ================================================================================
 
-module Module {
+module mod {
 
 import another.module.fail;
 import another.module2.*;

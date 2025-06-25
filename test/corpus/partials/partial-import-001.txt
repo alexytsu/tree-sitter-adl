@@ -1,0 +1,18 @@
+================================================================================
+Partials - "import partial"
+================================================================================
+module common {
+import partial
+
+struct Message {
+    String author;
+    String content;
+};
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body)))

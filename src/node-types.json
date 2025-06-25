@@ -19,33 +19,6 @@
     }
   },
   {
-    "type": "annotation_declaration",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "definition_preamble",
-          "named": true
-        },
-        {
-          "type": "field_reference",
-          "named": true
-        },
-        {
-          "type": "json_value",
-          "named": true
-        },
-        {
-          "type": "scoped_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "comment",
     "named": true,
     "fields": {}
@@ -117,7 +90,7 @@
     }
   },
   {
-    "type": "field_reference",
+    "type": "import_declaration",
     "named": true,
     "fields": {},
     "children": {
@@ -125,22 +98,11 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "import_declaration",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
           "type": "import_path",
+          "named": true
+        },
+        {
+          "type": "partial_import_declaration",
           "named": true
         }
       ]
@@ -246,10 +208,6 @@
       "required": false,
       "types": [
         {
-          "type": "annotation_declaration",
-          "named": true
-        },
-        {
           "type": "import_declaration",
           "named": true
         },
@@ -325,6 +283,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "partial_import_declaration",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "primitive_type",
@@ -546,10 +509,6 @@
     "named": false
   },
   {
-    "type": "::",
-    "named": false
-  },
-  {
     "type": ";",
     "named": false
   },
@@ -651,10 +610,6 @@
   },
   {
     "type": "]",
-    "named": false
-  },
-  {
-    "type": "annotation",
     "named": false
   },
   {
