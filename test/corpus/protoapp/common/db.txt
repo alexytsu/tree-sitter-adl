@@ -207,7 +207,8 @@ struct WithId<T>
         (type_name
           (identifier))
         (type_parameters
-          (identifier))
+          (scoped_name
+            (identifier)))
         (type_expression
           (primitive_type)))
       (struct_definition
@@ -217,7 +218,8 @@ struct WithId<T>
         (type_name
           (identifier))
         (type_parameters
-          (identifier))
+          (scoped_name
+            (identifier)))
         (field_block
           (field
             (definition_preamble

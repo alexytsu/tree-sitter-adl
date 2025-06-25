@@ -42,8 +42,10 @@ struct WithId<I,T> {
         (type_name
           (identifier))
         (type_parameters
-          (identifier)
-          (identifier))
+          (scoped_name
+            (identifier))
+          (scoped_name
+            (identifier)))
         (field_block
           (field
             (type_expression

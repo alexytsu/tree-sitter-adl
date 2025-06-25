@@ -1,6 +1,1 @@
-module test {
-  struct Test {
-    String simple = "hello";
-    String escaped = "{\"API_URL\":\"https://mobile.banking-app.com/_a\"}";
-  };
-};
+mod test {};

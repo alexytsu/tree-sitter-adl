@@ -363,7 +363,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "module_definition",
@@ -488,7 +488,7 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "scoped_name",
           "named": true
         }
       ]

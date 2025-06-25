@@ -12,8 +12,10 @@ module.exports = grammar({
 
   extras: ($) => [$.comment, /\s/],
 
+  word: ($) => $.identifier,
+
   rules: {
-    source_file: ($) => $.module_definition,
+    source_file: ($) => optional($.module_definition),
 
     scoped_name: ($) => seq($.identifier, repeat(seq(".", $.identifier))),
 
@@ -47,33 +49,10 @@ module.exports = grammar({
 
     import_path: ($) => seq($.scoped_name, optional(".*")),
 
-    type_definition: ($) =>
-      seq(
-        optional($.definition_preamble),
-        "type",
-        $.type_name,
-        optional($.type_parameters),
-        "=",
-        $.type_expression,
-        ";"
-      ),
-
-    newtype_definition: ($) =>
-      seq(
-        optional($.definition_preamble),
-        "newtype",
-        $.type_name,
-        optional($.type_parameters),
-        "=",
-        $.type_expression,
-        optional(seq("=", $.json_value)),
-        ";"
-      ),
-
     type_name: ($) => $.identifier,
 
     type_parameters: ($) =>
-      seq("<", $.identifier, repeat(seq(",", $.identifier)), ">"),
+      seq("<", $.scoped_name, repeat(seq(",", $.scoped_name)), ">"),
 
     type_expression: ($) =>
       choice(
@@ -106,6 +85,29 @@ module.exports = grammar({
         seq("StringMap", $.type_arguments),
         seq("Nullable", $.type_arguments),
         seq("TypeToken", $.type_arguments)
+      ),
+
+    newtype_definition: ($) =>
+      seq(
+        optional($.definition_preamble),
+        "newtype",
+        $.type_name,
+        optional($.type_parameters),
+        "=",
+        $.type_expression,
+        optional(seq("=", $.json_value)),
+        ";"
+      ),
+
+    type_definition: ($) =>
+      seq(
+        optional($.definition_preamble),
+        "type",
+        $.type_name,
+        optional($.type_parameters),
+        "=",
+        $.type_expression,
+        ";"
       ),
 
     struct_definition: ($) =>
@@ -145,7 +147,7 @@ module.exports = grammar({
       seq(
         optional($.definition_preamble),
         "annotation",
-        choice($.scoped_name, seq($.scoped_name, "::", $.field_reference)),
+        seq($.scoped_name, repeat(seq("::", $.field_reference))),
         $.scoped_name,
         $.json_value,
         ";"

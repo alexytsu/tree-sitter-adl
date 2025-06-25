@@ -16,6 +16,10 @@ annotation Struct::name FieldAnnotation {
     "field_name": "field_name"
 };
 
+annotation Struct::name::field_name FieldAnnotation {
+    "field_name": "field_name"
+};
+
 };
 
 --------------------------------------------------------------------------------
@@ -43,6 +47,21 @@ annotation Struct::name FieldAnnotation {
             (identifier))))
       (annotation_declaration
         (scoped_name
+          (identifier))
+        (field_reference
+          (identifier))
+        (scoped_name
+          (identifier))
+        (json_value
+          (json_object
+            (json_object_pair
+              (json_string)
+              (json_value
+                (json_string))))))
+      (annotation_declaration
+        (scoped_name
+          (identifier))
+        (field_reference
           (identifier))
         (field_reference
           (identifier))
