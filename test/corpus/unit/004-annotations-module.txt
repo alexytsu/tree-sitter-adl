@@ -1,0 +1,34 @@
+================================================================================
+Unit - Annotations - Module
+================================================================================
+
+/// Doccomment
+@ExampleAnnotation ""
+/// Doccomment
+// Comment
+@ExampleAnnotation2 {}
+module mod {
+
+};
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (definition_preamble
+      (docstring)
+      (annotation_decorator
+        (scoped_name
+          (identifier))
+        (json_value
+          (json_string)))
+      (docstring)
+      (comment)
+      (annotation_decorator
+        (scoped_name
+          (identifier))
+        (json_value
+          (json_object))))
+    (scoped_name
+      (identifier))
+    (module_body)))

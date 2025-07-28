@@ -15,4 +15,20 @@ struct Message {
   (module_definition
     (scoped_name
       (identifier))
-    (module_body)))
+    (module_body
+      (import_declaration
+        (import_path
+          (scoped_name
+            (identifier))))
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (primitive_type))
+            (identifier))
+          (field
+            (type_expression
+              (primitive_type))
+            (identifier)))))))

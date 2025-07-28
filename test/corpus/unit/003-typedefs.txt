@@ -1,11 +1,13 @@
 ================================================================================
-Imports
+Unit - Typedefs
 ================================================================================
 
 module mod {
 
-import another.module.fail;
-import another.module2.*;
+struct A {};
+union B {};
+type C = A;
+newtype D = A;
 
 };
 
@@ -16,14 +18,23 @@ import another.module2.*;
     (scoped_name
       (identifier))
     (module_body
-      (import_declaration
-        (import_path
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block))
+      (union_definition
+        (type_name
+          (identifier))
+        (field_block))
+      (type_definition
+        (type_name
+          (identifier))
+        (type_expression
           (scoped_name
-            (identifier)
-            (identifier)
             (identifier))))
-      (import_declaration
-        (import_path
+      (newtype_definition
+        (type_name
+          (identifier))
+        (type_expression
           (scoped_name
-            (identifier)
             (identifier)))))))

@@ -1,18 +1,16 @@
 ================================================================================
-Doccomments
+Unit - Kitchen Sink
 ================================================================================
 
-module module {
+module mod {
 
-import another.module.fail;
+import another.module.A;
 import another.module2.*;
 
-
-/// Struct doccomment
-struct Content {
-    /// Title doccomment
-    String title;
-};
+struct A {};
+union B {};
+type C = A;
+newtype D = A;
 
 };
 
@@ -35,14 +33,22 @@ struct Content {
             (identifier)
             (identifier))))
       (struct_definition
-        (definition_preamble
-          (docstring))
         (type_name
           (identifier))
-        (field_block
-          (field
-            (definition_preamble
-              (docstring))
-            (type_expression
-              (primitive_type))
+        (field_block))
+      (union_definition
+        (type_name
+          (identifier))
+        (field_block))
+      (type_definition
+        (type_name
+          (identifier))
+        (type_expression
+          (scoped_name
+            (identifier))))
+      (newtype_definition
+        (type_name
+          (identifier))
+        (type_expression
+          (scoped_name
             (identifier)))))))

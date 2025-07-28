@@ -1,14 +1,14 @@
 ================================================================================
-Partials - "import other."
+Unit - Imports
 ================================================================================
-module common {
-import other.
 
-struct Message {
-    String author;
-    String content;
+module mod {
+
+import another.module.Fail;
+import another.module2.*;
+
 };
-};
+
 --------------------------------------------------------------------------------
 
 (source_file
@@ -20,10 +20,10 @@ struct Message {
         (import_path
           (scoped_name
             (identifier)
-            (identifier)))
-        (ERROR
-          (identifier)
-          (identifier)
-          (identifier)
-          (identifier))))
-    (ERROR)))
+            (identifier)
+            (identifier))))
+      (import_declaration
+        (import_path
+          (scoped_name
+            (identifier)
+            (identifier)))))))

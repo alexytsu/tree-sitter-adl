@@ -1,5 +1,5 @@
 ================================================================================
-common.db
+protoapp.common.db
 ================================================================================
 module common.db {
 
@@ -207,8 +207,7 @@ struct WithId<T>
         (type_name
           (identifier))
         (type_parameters
-          (scoped_name
-            (identifier)))
+          (identifier))
         (type_expression
           (primitive_type)))
       (struct_definition
@@ -218,12 +217,11 @@ struct WithId<T>
         (type_name
           (identifier))
         (type_parameters
-          (scoped_name
-            (identifier)))
+          (identifier))
         (field_block
           (field
             (definition_preamble
-              (annotation
+              (annotation_decorator
                 (scoped_name
                   (identifier))))
             (type_expression
@@ -231,7 +229,7 @@ struct WithId<T>
             (identifier))
           (field
             (definition_preamble
-              (annotation
+              (annotation_decorator
                 (scoped_name
                   (identifier))))
             (type_expression

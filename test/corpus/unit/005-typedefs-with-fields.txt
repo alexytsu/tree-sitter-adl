@@ -1,13 +1,16 @@
 ================================================================================
-Struct
+Unit - Typedefs - With Fields
 ================================================================================
 
-module Module {
+module mod {
 
-struct Struct {
-    String field0;
-    String field1;
-    Int32 field2;
+struct A {
+    String name;
+    scoped.name.MyType name;
+};
+union B {
+    Void name;
+    scoped.name.MyType name;
 };
 
 };
@@ -29,9 +32,23 @@ struct Struct {
             (identifier))
           (field
             (type_expression
+              (scoped_name
+                (identifier)
+                (identifier)
+                (identifier)))
+            (identifier))))
+      (union_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
               (primitive_type))
             (identifier))
           (field
             (type_expression
-              (primitive_type))
+              (scoped_name
+                (identifier)
+                (identifier)
+                (identifier)))
             (identifier)))))))

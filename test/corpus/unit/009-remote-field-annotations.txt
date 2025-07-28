@@ -1,24 +1,16 @@
 ================================================================================
-Remote field annotations
+Unit - Remote annotations
 ================================================================================
 
 module module {
 
-struct FieldAnnotation {
-    String field_name;
-};
+annotation MyStruct FieldAnnotation "";
 
-struct Struct {
-    String name;
-};
-
-annotation Struct::name FieldAnnotation {
+annotation MyStruct::name FieldAnnotation {
     "field_name": "field_name"
 };
 
-annotation Struct::name::field_name FieldAnnotation {
-    "field_name": "field_name"
-};
+annotation MyStruct::name::field_name FieldAnnotation 1;
 
 };
 
@@ -29,22 +21,13 @@ annotation Struct::name::field_name FieldAnnotation {
     (scoped_name
       (identifier))
     (module_body
-      (struct_definition
-        (type_name
+      (annotation_declaration
+        (scoped_name
           (identifier))
-        (field_block
-          (field
-            (type_expression
-              (primitive_type))
-            (identifier))))
-      (struct_definition
-        (type_name
+        (scoped_name
           (identifier))
-        (field_block
-          (field
-            (type_expression
-              (primitive_type))
-            (identifier))))
+        (json_value
+          (json_string)))
       (annotation_declaration
         (scoped_name
           (identifier))
@@ -68,8 +51,4 @@ annotation Struct::name::field_name FieldAnnotation {
         (scoped_name
           (identifier))
         (json_value
-          (json_object
-            (json_object_pair
-              (json_string)
-              (json_value
-                (json_string)))))))))
+          (json_number))))))

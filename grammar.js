@@ -14,22 +14,21 @@ module.exports = grammar({
 
   word: ($) => $.identifier,
 
-  // conflicts: ($) => [[$.import_declaration, $.partial_import_declaration]],
-
   rules: {
     source_file: ($) => optional($.module_definition),
 
-    scoped_name: ($) =>
-      seq($.identifier, repeat(seq(".", optional($.identifier)))),
+    scoped_name: ($) => seq($.identifier, repeat(seq(".", $.identifier))),
 
-    definition_preamble: ($) => repeat1(choice($.annotation, $.docstring)),
+    definition_preamble: ($) =>
+      repeat1(choice($.annotation_decorator, $.docstring)),
 
     module_definition: ($) =>
       seq(
         optional($.definition_preamble),
         "module",
         $.scoped_name,
-        $.module_body
+        $.module_body,
+        optional(";")
       ),
 
     module_body: ($) =>
@@ -38,36 +37,30 @@ module.exports = grammar({
         repeat(
           choice(
             $.import_declaration,
+            $.annotation_declaration,
             $.type_definition,
             $.newtype_definition,
             $.struct_definition,
             $.union_definition
           )
         ),
-        "}",
-        optional(";")
+        "}"
       ),
 
-    import_declaration: ($) =>
-      choice(
-        $.partial_import_declaration,
-        seq("import", $.import_path, optional(";"))
-      ),
-
-    partial_import_declaration: ($) => "import",
+    import_declaration: ($) => seq("import", $.import_path, optional(";")),
 
     import_path: ($) => seq($.scoped_name, optional(".*")),
 
     type_name: ($) => $.identifier,
 
     type_parameters: ($) =>
-      seq("<", $.scoped_name, repeat(seq(",", $.scoped_name)), ">"),
+      seq("<", $.identifier, repeat(seq(",", $.identifier)), ">"),
 
     type_expression: ($) =>
       choice(
         $.primitive_type,
         $.scoped_name,
-        seq($.scoped_name, $.type_arguments)
+        seq($.scoped_name, $.type_arguments),
       ),
 
     type_arguments: ($) =>
@@ -125,7 +118,8 @@ module.exports = grammar({
         "struct",
         $.type_name,
         optional($.type_parameters),
-        optional($.field_block)
+        $.field_block,
+        optional(";")
       ),
 
     union_definition: ($) =>
@@ -134,10 +128,11 @@ module.exports = grammar({
         "union",
         $.type_name,
         optional($.type_parameters),
-        optional($.field_block)
+        $.field_block,
+        optional(";")
       ),
 
-    field_block: ($) => seq("{", repeat($.field), "}", optional(";")),
+    field_block: ($) => seq("{", repeat($.field), "}"),
 
     field: ($) =>
       seq(
@@ -148,13 +143,11 @@ module.exports = grammar({
         optional(";")
       ),
 
-    annotation: ($) => seq("@", $.scoped_name, optional($.json_value)),
-
-    annotations: ($) => repeat1($.annotation),
+    annotation_decorator: ($) =>
+      seq("@", $.scoped_name, optional($.json_value)),
 
     annotation_declaration: ($) =>
       seq(
-        optional($.definition_preamble),
         "annotation",
         seq($.scoped_name, repeat(seq("::", $.field_reference))),
         $.scoped_name,

@@ -1,0 +1,96 @@
+================================================================================
+Unit - Type Expressions
+================================================================================
+
+module mod {
+
+struct A<T> {
+    Vector<T> name;
+    scoped.name.MyType<T> name;
+    scoped.name.MyType<scoped.name.MyType> name;
+    T name;
+};
+
+type B<B, C, D> = A<B, C, D, E, F, G>;
+
+};
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (type_name
+          (identifier))
+        (type_parameters
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (primitive_type
+                (type_arguments
+                  (type_expression
+                    (scoped_name
+                      (identifier))))))
+            (identifier))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)
+                (identifier)
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier)))))
+            (identifier))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)
+                (identifier)
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier)
+                    (identifier)
+                    (identifier)))))
+            (identifier))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (identifier))))
+      (type_definition
+        (type_name
+          (identifier))
+        (type_parameters
+          (identifier)
+          (identifier)
+          (identifier))
+        (type_expression
+          (scoped_name
+            (identifier))
+          (type_arguments
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (type_expression
+              (scoped_name
+                (identifier)))))))))

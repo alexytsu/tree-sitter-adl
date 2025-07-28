@@ -11,4 +11,22 @@ struct Message {
 };
 --------------------------------------------------------------------------------
 
-(source_file)
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (import_declaration
+        (ERROR
+          (scoped_name
+            (identifier))
+          (identifier)
+          (import_path
+            (scoped_name
+              (identifier)))
+          (identifier))
+        (import_path
+          (scoped_name
+            (identifier)))))
+    (ERROR)))
+
