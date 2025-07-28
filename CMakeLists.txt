@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-adl
-        VERSION "0.5.0"
+        VERSION "0.6.0"
         DESCRIPTION "A tree-sitter grammar for Algebraic Data Language (ADL)"
         HOMEPAGE_URL "https://github.com/alexytsu/tree-sitter-adl"
         LANGUAGES C)
