@@ -778,8 +778,16 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "scoped_name"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "scoped_name"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SYMBOL",

@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-adl",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "A tree-sitter grammar for Algebraic Data Language (ADL)",
   "repository": "https://github.com/alexytsu/tree-sitter-adl",
   "license": "MIT",

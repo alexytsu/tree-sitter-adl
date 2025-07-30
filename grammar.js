@@ -150,7 +150,7 @@ module.exports = grammar({
       seq(
         "annotation",
         seq($.scoped_name, repeat(seq("::", $.field_reference))),
-        $.scoped_name,
+        optional($.scoped_name),
         $.json_value,
         optional(";")
       ),
