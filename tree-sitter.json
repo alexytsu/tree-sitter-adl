@@ -10,7 +10,8 @@
         "adl"
       ],
       "injection-regex": "^adl$",
-      "class-name": "TreeSitterAdl"
+      "class-name": "TreeSitterAdl",
+      "highlights": "queries/highlights.scm"
     }
   ],
   "metadata": {
