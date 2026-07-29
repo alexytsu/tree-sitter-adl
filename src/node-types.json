@@ -2,49 +2,78 @@
   {
     "type": "annotation_declaration",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "field_reference",
-          "named": true
-        },
-        {
-          "type": "json_value",
-          "named": true
-        },
-        {
-          "type": "scoped_name",
-          "named": true
-        }
-      ]
+    "fields": {
+      "field": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "field_name",
+            "named": true
+          }
+        ]
+      },
+      "target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "scoped_name",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "scoped_name",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "json_value",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "annotation_decorator",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "json_value",
-          "named": true
-        },
-        {
-          "type": "scoped_name",
-          "named": true
-        }
-      ]
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "scoped_name",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "json_value",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "comment",
     "named": true,
-    "extra": true,
     "fields": {}
   },
   {
@@ -74,25 +103,44 @@
   {
     "type": "field",
     "named": true,
-    "fields": {},
+    "fields": {
+      "default": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "json_value",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "field_name",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_expression",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
         {
           "type": "definition_preamble",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "json_value",
-          "named": true
-        },
-        {
-          "type": "type_expression",
           "named": true
         }
       ]
@@ -114,7 +162,7 @@
     }
   },
   {
-    "type": "field_reference",
+    "type": "field_name",
     "named": true,
     "fields": {},
     "children": {
@@ -131,16 +179,17 @@
   {
     "type": "import_declaration",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "import_path",
-          "named": true
-        }
-      ]
+    "fields": {
+      "path": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "import_path",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -272,21 +321,34 @@
   {
     "type": "module_definition",
     "named": true,
-    "fields": {},
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "module_body",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "scoped_name",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
         {
           "type": "definition_preamble",
-          "named": true
-        },
-        {
-          "type": "module_body",
-          "named": true
-        },
-        {
-          "type": "scoped_name",
           "named": true
         }
       ]
@@ -295,44 +357,64 @@
   {
     "type": "newtype_definition",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "definition_preamble",
-          "named": true
-        },
-        {
-          "type": "json_value",
-          "named": true
-        },
-        {
-          "type": "type_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parameters",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "primitive_type",
-    "named": true,
-    "fields": {},
+    "fields": {
+      "default": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "json_value",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_name",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_parameters",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_expression",
+            "named": true
+          }
+        ]
+      },
+      "version": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "version",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": false,
       "types": [
         {
-          "type": "type_arguments",
+          "type": "definition_preamble",
           "named": true
         }
       ]
@@ -372,25 +454,54 @@
   {
     "type": "struct_definition",
     "named": true,
-    "fields": {},
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "field_block",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_name",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_parameters",
+            "named": true
+          }
+        ]
+      },
+      "version": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "version",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
         {
           "type": "definition_preamble",
-          "named": true
-        },
-        {
-          "type": "field_block",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parameters",
           "named": true
         }
       ]
@@ -414,25 +525,54 @@
   {
     "type": "type_definition",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_name",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_parameters",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_expression",
+            "named": true
+          }
+        ]
+      },
+      "version": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "version",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
         {
           "type": "definition_preamble",
-          "named": true
-        },
-        {
-          "type": "type_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parameters",
           "named": true
         }
       ]
@@ -441,24 +581,27 @@
   {
     "type": "type_expression",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "primitive_type",
-          "named": true
-        },
-        {
-          "type": "scoped_name",
-          "named": true
-        },
-        {
-          "type": "type_arguments",
-          "named": true
-        }
-      ]
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_arguments",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "scoped_name",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -494,25 +637,54 @@
   {
     "type": "union_definition",
     "named": true,
-    "fields": {},
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "field_block",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_name",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_parameters",
+            "named": true
+          }
+        ]
+      },
+      "version": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "version",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
         {
           "type": "definition_preamble",
-          "named": true
-        },
-        {
-          "type": "field_block",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "type_parameters",
           "named": true
         }
       ]
@@ -564,82 +736,6 @@
   },
   {
     "type": "@",
-    "named": false
-  },
-  {
-    "type": "Bool",
-    "named": false
-  },
-  {
-    "type": "Bytes",
-    "named": false
-  },
-  {
-    "type": "Double",
-    "named": false
-  },
-  {
-    "type": "Float",
-    "named": false
-  },
-  {
-    "type": "Int16",
-    "named": false
-  },
-  {
-    "type": "Int32",
-    "named": false
-  },
-  {
-    "type": "Int64",
-    "named": false
-  },
-  {
-    "type": "Int8",
-    "named": false
-  },
-  {
-    "type": "Json",
-    "named": false
-  },
-  {
-    "type": "Nullable",
-    "named": false
-  },
-  {
-    "type": "String",
-    "named": false
-  },
-  {
-    "type": "StringMap",
-    "named": false
-  },
-  {
-    "type": "TypeToken",
-    "named": false
-  },
-  {
-    "type": "Vector",
-    "named": false
-  },
-  {
-    "type": "Void",
-    "named": false
-  },
-  {
-    "type": "Word16",
-    "named": false
-  },
-  {
-    "type": "Word32",
-    "named": false
-  },
-  {
-    "type": "Word64",
-    "named": false
-  },
-  {
-    "type": "Word8",
     "named": false
   },
   {
@@ -701,6 +797,10 @@
   {
     "type": "union",
     "named": false
+  },
+  {
+    "type": "version",
+    "named": true
   },
   {
     "type": "{",

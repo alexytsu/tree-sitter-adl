@@ -21,6 +21,8 @@ struct Message {
           (scoped_name
             (identifier))
           (identifier)
+          (scoped_name
+            (identifier))
           (import_path
             (scoped_name
               (identifier)))
@@ -29,4 +31,3 @@ struct Message {
           (scoped_name
             (identifier)))))
     (ERROR)))
-

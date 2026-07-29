@@ -10,7 +10,7 @@ annotation MyStruct::name FieldAnnotation {
     "field_name": "field_name"
 };
 
-annotation MyStruct::name::field_name FieldAnnotation 1;
+annotation other.module.MyStruct DeclAnnotation 1;
 
 };
 
@@ -31,7 +31,7 @@ annotation MyStruct::name::field_name FieldAnnotation 1;
       (annotation_declaration
         (scoped_name
           (identifier))
-        (field_reference
+        (field_name
           (identifier))
         (scoped_name
           (identifier))
@@ -43,10 +43,8 @@ annotation MyStruct::name::field_name FieldAnnotation 1;
                 (json_string))))))
       (annotation_declaration
         (scoped_name
-          (identifier))
-        (field_reference
-          (identifier))
-        (field_reference
+          (identifier)
+          (identifier)
           (identifier))
         (scoped_name
           (identifier))

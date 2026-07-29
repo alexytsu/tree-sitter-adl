@@ -26,8 +26,8 @@ module.exports = grammar({
       seq(
         optional($.definition_preamble),
         "module",
-        $.scoped_name,
-        $.module_body,
+        field("name", $.scoped_name),
+        field("body", $.module_body),
         optional(";")
       ),
 
@@ -47,57 +47,37 @@ module.exports = grammar({
         "}"
       ),
 
-    import_declaration: ($) => seq("import", $.import_path, optional(";")),
+    import_declaration: ($) =>
+      seq("import", field("path", $.import_path), optional(";")),
 
     import_path: ($) => seq($.scoped_name, optional(".*")),
 
     type_name: ($) => $.identifier,
 
+    version: ($) => token(seq("#", /\d+/)),
+
     type_parameters: ($) =>
       seq("<", $.identifier, repeat(seq(",", $.identifier)), ">"),
 
     type_expression: ($) =>
-      choice(
-        $.primitive_type,
-        $.scoped_name,
-        seq($.scoped_name, $.type_arguments),
+      seq(
+        field("name", $.scoped_name),
+        optional(field("arguments", $.type_arguments))
       ),
 
     type_arguments: ($) =>
       seq("<", $.type_expression, repeat(seq(",", $.type_expression)), ">"),
 
-    primitive_type: ($) =>
-      choice(
-        "Int8",
-        "Int16",
-        "Int32",
-        "Int64",
-        "Word8",
-        "Word16",
-        "Word32",
-        "Word64",
-        "Bool",
-        "Void",
-        "Float",
-        "Double",
-        "String",
-        "Bytes",
-        "Json",
-        seq("Vector", $.type_arguments),
-        seq("StringMap", $.type_arguments),
-        seq("Nullable", $.type_arguments),
-        seq("TypeToken", $.type_arguments)
-      ),
-
     newtype_definition: ($) =>
       seq(
         optional($.definition_preamble),
         "newtype",
-        $.type_name,
-        optional($.type_parameters),
+        field("name", $.type_name),
+        optional(field("version", $.version)),
+        optional(field("parameters", $.type_parameters)),
         "=",
-        $.type_expression,
-        optional(seq("=", $.json_value)),
+        field("type", $.type_expression),
+        optional(seq("=", field("default", $.json_value))),
         optional(";")
       ),
 
@@ -105,10 +85,11 @@ module.exports = grammar({
       seq(
         optional($.definition_preamble),
         "type",
-        $.type_name,
-        optional($.type_parameters),
+        field("name", $.type_name),
+        optional(field("version", $.version)),
+        optional(field("parameters", $.type_parameters)),
         "=",
-        $.type_expression,
+        field("type", $.type_expression),
         optional(";")
       ),
 
@@ -116,9 +97,10 @@ module.exports = grammar({
       seq(
         optional($.definition_preamble),
         "struct",
-        $.type_name,
-        optional($.type_parameters),
-        $.field_block,
+        field("name", $.type_name),
+        optional(field("version", $.version)),
+        optional(field("parameters", $.type_parameters)),
+        field("body", $.field_block),
         optional(";")
       ),
 
@@ -126,9 +108,10 @@ module.exports = grammar({
       seq(
         optional($.definition_preamble),
         "union",
-        $.type_name,
-        optional($.type_parameters),
-        $.field_block,
+        field("name", $.type_name),
+        optional(field("version", $.version)),
+        optional(field("parameters", $.type_parameters)),
+        field("body", $.field_block),
         optional(";")
       ),
 
@@ -137,25 +120,26 @@ module.exports = grammar({
     field: ($) =>
       seq(
         optional($.definition_preamble),
-        $.type_expression,
-        $.identifier,
-        optional(seq("=", $.json_value)),
+        field("type", $.type_expression),
+        field("name", $.field_name),
+        optional(seq("=", field("default", $.json_value))),
         optional(";")
       ),
 
+    field_name: ($) => $.identifier,
+
     annotation_decorator: ($) =>
-      seq("@", $.scoped_name, optional($.json_value)),
+      seq("@", field("name", $.scoped_name), optional(field("value", $.json_value))),
 
     annotation_declaration: ($) =>
       seq(
         "annotation",
-        seq($.scoped_name, repeat(seq("::", $.field_reference))),
-        optional($.scoped_name),
-        $.json_value,
+        field("target", $.scoped_name),
+        optional(seq("::", field("field", $.field_name))),
+        field("type", $.scoped_name),
+        field("value", $.json_value),
         optional(";")
       ),
-
-    field_reference: ($) => seq($.identifier),
 
     comment: ($) => seq("//", /[^\n]*/),
 

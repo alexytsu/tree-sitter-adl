@@ -119,6 +119,7 @@ struct OverrideApiUrl {
             (type_expression
               (scoped_name
                 (identifier)))
-            (identifier)
+            (field_name
+              (identifier))
             (json_value
               (json_string))))))))

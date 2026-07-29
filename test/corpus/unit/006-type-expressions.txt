@@ -30,12 +30,14 @@ type B<B, C, D> = A<B, C, D, E, F, G>;
         (field_block
           (field
             (type_expression
-              (primitive_type
-                (type_arguments
-                  (type_expression
-                    (scoped_name
-                      (identifier))))))
-            (identifier))
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier)))))
+            (field_name
+              (identifier)))
           (field
             (type_expression
               (scoped_name
@@ -46,7 +48,8 @@ type B<B, C, D> = A<B, C, D, E, F, G>;
                 (type_expression
                   (scoped_name
                     (identifier)))))
-            (identifier))
+            (field_name
+              (identifier)))
           (field
             (type_expression
               (scoped_name
@@ -59,12 +62,14 @@ type B<B, C, D> = A<B, C, D, E, F, G>;
                     (identifier)
                     (identifier)
                     (identifier)))))
-            (identifier))
+            (field_name
+              (identifier)))
           (field
             (type_expression
               (scoped_name
                 (identifier)))
-            (identifier))))
+            (field_name
+              (identifier)))))
       (type_definition
         (type_name
           (identifier))

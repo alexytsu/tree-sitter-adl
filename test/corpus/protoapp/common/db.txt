@@ -93,63 +93,81 @@ struct WithId<T>
           (comment)
           (field
             (type_expression
-              (primitive_type))
-            (identifier)
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))
             (json_value
               (json_string)))
           (comment)
           (field
             (type_expression
-              (primitive_type
-                (type_arguments
-                  (type_expression
-                    (primitive_type
-                      (type_arguments
-                        (type_expression
-                          (primitive_type))))))))
-            (identifier)
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier))
+                  (type_arguments
+                    (type_expression
+                      (scoped_name
+                        (identifier)))))))
+            (field_name
+              (identifier))
             (json_value
               (json_array)))
           (comment)
           (field
             (type_expression
-              (primitive_type
-                (type_arguments
-                  (type_expression
-                    (primitive_type
-                      (type_arguments
-                        (type_expression
-                          (primitive_type))))))))
-            (identifier)
-            (json_value
-              (json_array)))
-          (comment)
-          (comment)
-          (field
-            (type_expression
-              (primitive_type
-                (type_arguments
-                  (type_expression
-                    (primitive_type)))))
-            (identifier)
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier))
+                  (type_arguments
+                    (type_expression
+                      (scoped_name
+                        (identifier)))))))
+            (field_name
+              (identifier))
             (json_value
               (json_array)))
           (comment)
           (comment)
           (field
             (type_expression
-              (primitive_type
-                (type_arguments
-                  (type_expression
-                    (primitive_type)))))
-            (identifier)
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier)))))
+            (field_name
+              (identifier))
+            (json_value
+              (json_array)))
+          (comment)
+          (comment)
+          (field
+            (type_expression
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier)))))
+            (field_name
+              (identifier))
             (json_value
               (json_array)))
           (comment)
           (field
             (type_expression
-              (primitive_type))
-            (identifier)
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))
             (json_value
               (json_string)))))
       (comment)
@@ -163,8 +181,10 @@ struct WithId<T>
           (comment)
           (field
             (type_expression
-              (primitive_type))
-            (identifier)
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))
             (json_value
               (json_string)))))
       (type_definition
@@ -174,7 +194,8 @@ struct WithId<T>
         (type_name
           (identifier))
         (type_expression
-          (primitive_type)))
+          (scoped_name
+            (identifier))))
       (type_definition
         (definition_preamble
           (docstring)
@@ -182,7 +203,8 @@ struct WithId<T>
         (type_name
           (identifier))
         (type_expression
-          (primitive_type)))
+          (scoped_name
+            (identifier))))
       (type_definition
         (definition_preamble
           (docstring)
@@ -191,7 +213,8 @@ struct WithId<T>
         (type_name
           (identifier))
         (type_expression
-          (primitive_type)))
+          (scoped_name
+            (identifier))))
       (type_definition
         (definition_preamble
           (docstring)
@@ -199,7 +222,8 @@ struct WithId<T>
         (type_name
           (identifier))
         (type_expression
-          (primitive_type)))
+          (scoped_name
+            (identifier))))
       (newtype_definition
         (definition_preamble
           (docstring)
@@ -209,7 +233,8 @@ struct WithId<T>
         (type_parameters
           (identifier))
         (type_expression
-          (primitive_type)))
+          (scoped_name
+            (identifier))))
       (struct_definition
         (definition_preamble
           (docstring)
@@ -225,8 +250,10 @@ struct WithId<T>
                 (scoped_name
                   (identifier))))
             (type_expression
-              (primitive_type))
-            (identifier))
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier)))
           (field
             (definition_preamble
               (annotation_decorator
@@ -235,4 +262,5 @@ struct WithId<T>
             (type_expression
               (scoped_name
                 (identifier)))
-            (identifier)))))))
+            (field_name
+              (identifier))))))))
