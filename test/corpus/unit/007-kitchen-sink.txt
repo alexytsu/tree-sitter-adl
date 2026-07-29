@@ -4,7 +4,7 @@ Unit - Kitchen Sink
 
 module mod {
 
-import another.module.A;
+import another.mymodule.A;
 import another.module2.*;
 
 struct A {};

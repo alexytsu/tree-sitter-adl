@@ -19,12 +19,21 @@ struct Message {
       (import_declaration
         (import_path
           (scoped_name
-            (identifier)
-            (identifier)))
-        (ERROR
-          (identifier)
-          (identifier)
-          (identifier)
-          (identifier)
-          (identifier))))
-    (ERROR)))
+            (identifier))))
+      (ERROR)
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier)))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))))))))

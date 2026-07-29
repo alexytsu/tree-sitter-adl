@@ -2,7 +2,7 @@
 Unit - JSON
 ================================================================================
 
-module gnarly.json.module {
+module gnarly.json.jsonmodule {
 
 annotation PaymentStatusView DbView {
   "withIdPrimaryKey" : true,

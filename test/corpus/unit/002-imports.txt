@@ -4,7 +4,7 @@ Unit - Imports
 
 module mod {
 
-import another.module.Fail;
+import another.mymodule.Fail;
 import another.module2.*;
 
 };

@@ -2,7 +2,7 @@
 Unit - Remote annotations
 ================================================================================
 
-module module {
+module mymodule {
 
 annotation MyStruct FieldAnnotation "";
 
@@ -10,7 +10,7 @@ annotation MyStruct::name FieldAnnotation {
     "field_name": "field_name"
 };
 
-annotation other.module.MyStruct DeclAnnotation 1;
+annotation other.mymodule.MyStruct DeclAnnotation 1;
 
 };
 

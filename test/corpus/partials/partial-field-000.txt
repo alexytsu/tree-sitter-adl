@@ -1,0 +1,97 @@
+================================================================================
+Partials - field missing its name
+================================================================================
+module common {
+struct Message {
+    String
+    String content;
+};
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier)))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (MISSING identifier))))))))
+
+================================================================================
+Partials - field with dangling default "="
+================================================================================
+module common {
+struct Message {
+    String author = ;
+};
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))
+            (ERROR)))))))
+
+================================================================================
+Partials - unclosed type arguments
+================================================================================
+module common {
+struct Message {
+    Vector<String items;
+    String content;
+};
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier)))
+                (MISSING ">")))
+            (field_name
+              (identifier)))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))))))))

@@ -14,6 +14,14 @@ module.exports = grammar({
 
   word: ($) => $.identifier,
 
+  // The six reserved words of ADL (ParserP.hs). Everything else — including
+  // "annotation" and all primitive names — is a plain identifier. Reserving
+  // these keeps error recovery local: a keyword can never be mis-lexed as an
+  // identifier (e.g. a half-typed import swallowing the next declaration).
+  reserved: {
+    global: ($) => ["module", "import", "struct", "union", "type", "newtype"],
+  },
+
   rules: {
     source_file: ($) => optional($.module_definition),
 
