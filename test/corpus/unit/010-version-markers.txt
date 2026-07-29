@@ -1,0 +1,113 @@
+================================================================================
+Unit - Version markers - struct (canonical test10)
+================================================================================
+module Test
+{
+    struct X#1
+    {
+    };
+
+    struct X#2
+    {
+    };
+
+    struct X#3
+    {
+    };
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (type_name
+          (identifier))
+        (version)
+        (field_block))
+      (struct_definition
+        (type_name
+          (identifier))
+        (version)
+        (field_block))
+      (struct_definition
+        (type_name
+          (identifier))
+        (version)
+        (field_block)))))
+
+================================================================================
+Unit - Version markers - all declaration kinds
+================================================================================
+module Test {
+    struct S#2 { Int32 x; };
+    union U#3 { Int32 x; };
+    type T#1 = Int32;
+    newtype N#4 = Int32;
+    struct G#2<A,B> { A x; B y; };
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (type_name
+          (identifier))
+        (version)
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier)))))
+      (union_definition
+        (type_name
+          (identifier))
+        (version)
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier)))))
+      (type_definition
+        (type_name
+          (identifier))
+        (version)
+        (type_expression
+          (scoped_name
+            (identifier))))
+      (newtype_definition
+        (type_name
+          (identifier))
+        (version)
+        (type_expression
+          (scoped_name
+            (identifier))))
+      (struct_definition
+        (type_name
+          (identifier))
+        (version)
+        (type_parameters
+          (identifier)
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier)))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))))))))

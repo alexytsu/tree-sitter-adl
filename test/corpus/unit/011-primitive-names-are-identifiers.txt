@@ -1,0 +1,49 @@
+================================================================================
+Unit - Primitive names are plain identifiers
+================================================================================
+module Test {
+    struct A {
+        String String;
+        Int32 Vector;
+    };
+    struct Vector {
+        Vector<String> items;
+    };
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier)))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier)))))
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier)))))
+            (field_name
+              (identifier))))))))

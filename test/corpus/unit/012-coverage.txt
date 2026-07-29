@@ -1,0 +1,262 @@
+================================================================================
+Unit - Newtype with default value
+================================================================================
+module Test {
+    newtype Date = String = "2000-01-01";
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (newtype_definition
+        (type_name
+          (identifier))
+        (type_expression
+          (scoped_name
+            (identifier)))
+        (json_value
+          (json_string))))))
+
+================================================================================
+Unit - Parameterised primitive-named types
+================================================================================
+module Test {
+    struct A {
+        StringMap<Int32> counts;
+        Nullable<String> maybe;
+        TypeToken<A> tok;
+        Vector<StringMap<Nullable<Bool>>> deep;
+    };
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier)))))
+            (field_name
+              (identifier)))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier)))))
+            (field_name
+              (identifier)))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier)))))
+            (field_name
+              (identifier)))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier))
+                  (type_arguments
+                    (type_expression
+                      (scoped_name
+                        (identifier))
+                      (type_arguments
+                        (type_expression
+                          (scoped_name
+                            (identifier)))))))))
+            (field_name
+              (identifier))))))))
+
+================================================================================
+Unit - Decl-level annotation with payload
+================================================================================
+module Test {
+    @Ann {"key": [1, true, null]}
+    @Bare
+    struct A {
+        Int32 x;
+    };
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (definition_preamble
+          (annotation_decorator
+            (scoped_name
+              (identifier))
+            (json_value
+              (json_object
+                (json_object_pair
+                  (json_string)
+                  (json_value
+                    (json_array
+                      (json_value
+                        (json_number))
+                      (json_value)
+                      (json_value)))))))
+          (annotation_decorator
+            (scoped_name
+              (identifier))))
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))))))))
+
+================================================================================
+Unit - Multi-parameter struct
+================================================================================
+module Test {
+    struct Pair<A, B> {
+        A first;
+        B second;
+    };
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (type_name
+          (identifier))
+        (type_parameters
+          (identifier)
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier)))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))))))))
+
+================================================================================
+Unit - Module without trailing semicolon
+================================================================================
+module Test {
+    struct A { Int32 x; };
+}
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))))))))
+
+================================================================================
+Unit - Scalar JSON defaults on fields
+================================================================================
+module Test {
+    struct A {
+        Nullable<String> a = null;
+        Bool b = true;
+        Bool c = false;
+        Double d = -1.5e3;
+        Int32 e = 42;
+    };
+};
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_definition
+    (scoped_name
+      (identifier))
+    (module_body
+      (struct_definition
+        (type_name
+          (identifier))
+        (field_block
+          (field
+            (type_expression
+              (scoped_name
+                (identifier))
+              (type_arguments
+                (type_expression
+                  (scoped_name
+                    (identifier)))))
+            (field_name
+              (identifier))
+            (json_value))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))
+            (json_value))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))
+            (json_value))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))
+            (json_value
+              (json_number)))
+          (field
+            (type_expression
+              (scoped_name
+                (identifier)))
+            (field_name
+              (identifier))
+            (json_value
+              (json_number))))))))
