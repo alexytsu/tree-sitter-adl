@@ -139,11 +139,21 @@ module.exports = grammar({
     annotation_decorator: ($) =>
       seq("@", field("name", $.scoped_name), optional(field("value", $.json_value))),
 
+    // Canonical annotation0 (ParserP.hs:168-186) has three target forms:
+    //   annotation Decl::field Type value;   (field target)
+    //   annotation Decl Type value;          (decl target)
+    //   annotation Type value;               (module target — no explicit target)
+    // The module form carries only the annotation-type name, so `target` is
+    // optional (contract relaxation: §2 listed it as mandatory).
     annotation_declaration: ($) =>
       seq(
         "annotation",
-        field("target", $.scoped_name),
-        optional(seq("::", field("field", $.field_name))),
+        optional(
+          seq(
+            field("target", $.scoped_name),
+            optional(seq("::", field("field", $.field_name)))
+          )
+        ),
         field("type", $.scoped_name),
         field("value", $.json_value),
         optional(";")

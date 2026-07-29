@@ -1,0 +1,85 @@
+module test3
+{
+
+struct A
+{
+   Int16 f_int;
+   String f_string;
+   Bool f_bool = false;
+};
+
+struct XY<T>
+{
+   T x;
+   T y;
+};
+
+struct B<T>
+{
+   T f_t;
+   String f_string;
+   Vector<T> f_tvec;
+   XY<T> f_xy;
+};
+
+union U
+{
+   Int16 f_int;
+   String f_string;
+   Void f_void;
+};
+
+union E
+{
+   Void v1;
+   Void v2;
+};
+
+struct S<T>
+{
+    Void f_void = null;
+    Bool f_bool = true;
+    Int8 f_int8 = -5;
+    Int16 f_int16 = -10000;
+    Int32 f_int32 = 56;
+    Int64 f_int64 = 40000;
+    Word8 f_word8 = 32;
+    Word16 f_word16 = 50000;
+    Word32 f_word32 = 124456;
+    Word64 f_word64 = 2344;
+    Float f_float = 0.5;
+    Double f_double = 0.45;
+    Bytes f_bytes = "aGVsbG8=";
+    String f_string = "abcd";
+
+    Vector<String> f_vstring = ["xy", "ab" ];
+
+    A f_a = { "f_int" : 0,
+              "f_string" : "xyz" };
+
+    U f_u = { "f_int" : 45 };
+    U f_u1 = "f_void";
+
+    E f_e = "v2";
+
+    T f_t;
+
+    B<Int16> f_bint16 = {
+        "f_t" : 56,
+        "f_string" : "yikes",
+        "f_tvec" : [1,2,3],
+        "f_xy" : { "x" : 5, "y" : 5 }
+    };
+
+    StringMap<Int32> f_smap = {
+       "a" : 45,
+       "b" : 47
+    };
+
+    Json f_json1 = null;
+    Json f_json2 = [{"v1" : 27, "v2" : "abcde"}, true];
+
+    Nullable<T> f_nt = null;
+};
+
+};

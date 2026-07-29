@@ -1,0 +1,18 @@
+module test14
+{
+    struct switch
+    {
+         Double double;
+         Int32    int;
+         String string;
+         Bool for;
+         String Objects;
+    };
+
+    union unsigned
+    {
+         Void null;
+    };
+
+    newtype Factory = String;
+};

@@ -12,6 +12,8 @@ annotation MyStruct::name FieldAnnotation {
 
 annotation other.mymodule.MyStruct DeclAnnotation 1;
 
+annotation JavaPackage "org.adl.runtime.sys.types";
+
 };
 
 --------------------------------------------------------------------------------
@@ -49,4 +51,9 @@ annotation other.mymodule.MyStruct DeclAnnotation 1;
         (scoped_name
           (identifier))
         (json_value
-          (json_number))))))
+          (json_number)))
+      (annotation_declaration
+        (scoped_name
+          (identifier))
+        (json_value
+          (json_string))))))

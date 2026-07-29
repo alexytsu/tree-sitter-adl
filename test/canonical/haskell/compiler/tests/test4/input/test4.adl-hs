@@ -1,0 +1,17 @@
+module test4
+{
+
+import adlc.config.haskell.HaskellCustomType;
+
+annotation Date HaskellCustomType {
+    "haskellname" : "Date",
+    "haskellimports" : [
+        "qualified Date"
+     ],
+    "insertCode" : [
+        "type Date = Date.Date"
+    ],
+    "structConstructor" : "Date.fromText"
+};
+
+};

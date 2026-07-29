@@ -1,0 +1,109 @@
+module test5
+{
+   // Tests for unions
+
+   union U1
+   {
+       Void v;
+   };
+
+   union U2
+   {
+       Int16 v;
+   };
+
+   union U3
+   {
+       Int16 v = 100;
+   };
+
+   struct S1
+   {
+      Int16 f = 100;
+   };
+
+   union U4
+   {
+       S1 v;
+   };
+
+   union U5
+   {
+       S1 v = { "f" : 200 };
+   };
+
+   union U6
+   {
+       U3 v;
+   };
+
+   union U7
+   {
+       U3 v = { "v" : 75 };
+   };
+
+   union U8
+   {
+       S1 v1;
+       Int16 v2;
+   };
+
+   union U9<T>
+   {
+       T v1;
+       Int16 v2;
+       Void v3;
+   };
+
+   struct S {
+       U9<String> f1 = {"v1":"xx"};
+       U9<String> f2 = {"v2":100};
+       U9<String> f3 = "v3";
+   };
+
+   // A recursive type
+
+   union List<T>
+   {
+       Void null;
+       Cell<T> cell;
+   };
+
+   struct Cell<T>
+   {
+        T head;
+        List<T> tail;
+   };
+
+   union U10
+   {
+       Int16 v1;
+
+       Void v2;
+   };
+
+   struct S10
+   {
+       U10 f1 = "v2";
+       Nullable<U10> f2 = "v2";
+       U10 f3 = {"v1": 17};
+       Nullable<U10> f4 = {"v1": 17};
+   };
+
+   union U11
+   {
+       @SerializedName "VALUE1"
+       Int16 v1;
+
+       @SerializedName "VALUE2"
+       Void v2;
+   };
+
+   struct S11
+   {
+       U11 f1 = "VALUE2";
+       Nullable<U11> f2 = "VALUE2";
+       U11 f3 = {"VALUE1": 17};
+       Nullable<U11> f4 = {"VALUE1": 17};
+   };
+};

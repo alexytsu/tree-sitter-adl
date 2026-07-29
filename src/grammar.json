@@ -807,30 +807,43 @@
           "value": "annotation"
         },
         {
-          "type": "FIELD",
-          "name": "target",
-          "content": {
-            "type": "SYMBOL",
-            "name": "scoped_name"
-          }
-        },
-        {
           "type": "CHOICE",
           "members": [
             {
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "::"
-                },
-                {
                   "type": "FIELD",
-                  "name": "field",
+                  "name": "target",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "field_name"
+                    "name": "scoped_name"
                   }
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": "::"
+                        },
+                        {
+                          "type": "FIELD",
+                          "name": "field",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "field_name"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
                 }
               ]
             },
